@@ -662,17 +662,47 @@
       .audience-card   { border-right: none; border-bottom: 1px solid var(--border); }
       .audience-card:last-child { border-bottom: none; }
       .resources-grid  { grid-template-columns: 1fr 1fr; }
-      .stats-grid      { grid-template-columns: 1fr 1fr; gap: 32px; }
-      .stat-item       { border-right: none; }
+      .stats-grid      { grid-template-columns: 1fr 1fr; gap: 0; }
+      .stat-item       { border-right: none; padding: 24px 16px; }
+      /* Add bottom border to top row of 2×2 stats grid */
+      .stat-item:nth-child(-n+2) { border-bottom: 1px solid var(--border-mid); }
       .footer-inner    { grid-template-columns: 1fr 1fr; }
       .cta-strip       { flex-direction: column; padding: 44px 32px; }
+      .cta-strip-graphic { display: none; }
       .nav-links       { display: none; }
+      /* Hide the secondary outline button in nav on mobile — keep only "Get started" */
+      .nav-inner > div > .btn-outline { display: none; }
       .labs-inner      { grid-template-columns: 1fr; }
+      /* FAQ — single column on tablet/mobile */
+      .faq-layout      { grid-template-columns: 1fr; gap: 32px; }
+      .faq-intro       { position: static; }
+      .faq-intro .section-sub { max-width: 100%; }
+      /* Reduce hero illustration negative margin */
+      .hero-illustration { margin-top: -100px; }
     }
     @media (max-width: 600px) {
-      .resources-grid { grid-template-columns: 1fr; }
-      .footer-inner   { grid-template-columns: 1fr; }
-      .cta-strip      { padding: 36px 24px; }
+      .container       { padding: 0 18px; }
+      .resources-grid  { grid-template-columns: 1fr; }
+      .footer-inner    { grid-template-columns: 1fr; }
+      .cta-strip       { padding: 36px 24px; border-radius: 14px; }
+      /* Hero illustration — minimal overlap on small phones */
+      .hero-illustration { margin-top: -60px; }
+      /* Carousel cards — shrink for small screens */
+      .c-card          { flex: 0 0 240px; }
+      /* Stats — full width single column */
+      .stats-grid      { grid-template-columns: 1fr; }
+      .stat-item       { border-right: none; border-bottom: 1px solid var(--border-mid); padding: 20px 0; }
+      .stat-item:nth-child(-n+2) { border-bottom: 1px solid var(--border-mid); }
+      .stat-item:last-child { border-bottom: none; }
+      /* Hero buttons stack vertically on small phones */
+      .hero-cta-row    { flex-direction: column; align-items: center; gap: 10px; }
+      .hero-cta-row .btn-primary,
+      .hero-cta-row .btn-outline { width: 100%; max-width: 280px; justify-content: center; text-align: center; }
+      /* Footer brand alignment */
+      .footer-tagline  { text-align: center; }
+      /* CTA buttons stack */
+      .cta-btns        { flex-direction: column; gap: 10px; }
+      .cta-btns a      { text-align: center; }
     }
 
     /* ══════════════════════════
