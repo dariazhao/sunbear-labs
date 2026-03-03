@@ -258,12 +258,12 @@
     .audience-card.aud-educators::before { background: radial-gradient(circle, rgba(75,175,148,.16) 0%, transparent 70%); }
     .audience-card.aud-families::before  { background: radial-gradient(circle, rgba(255,202,0,.2) 0%, transparent 70%); }
     .audience-card.aud-operators::before { background: radial-gradient(circle, rgba(205,144,227,.16) 0%, transparent 70%); }
-    /* Emoji */
+    /* Audience card illustrations */
     .aud-emoji {
-      font-size: 40px; display: block; margin-bottom: 16px; line-height: 1;
-      transition: transform 0.38s cubic-bezier(.34,1.56,.64,1);
+      width: 72px; height: auto; display: block; margin-bottom: 16px;
+      transition: transform 0.42s cubic-bezier(.34,1.56,.64,1);
     }
-    .audience-card:hover .aud-emoji { transform: scale(1.2) rotate(-7deg); }
+    .audience-card:hover .aud-emoji { transform: scale(1.15) rotate(-6deg); }
     /* Pill tag */
     .aud-title {
       display: inline-flex; align-items: center;
@@ -956,21 +956,21 @@
     <div class="audience-grid">
 
       <div class="audience-card aud-educators">
-        <span class="aud-emoji">📖</span>
+        <img src="Sample Images/sunbear-educator.svg" class="aud-emoji" alt="" aria-hidden="true" width="72" height="84">
         <div class="aud-title">For Educators</div>
         <div class="aud-desc"><strong>Standards-Aligned Activities:</strong> Automate ELOF-aligned activity planning and assessment rubrics. Spend less time on paperwork and more time on high-impact interactions.</div>
         <span class="aud-stat">✦ Saves 3+ hrs/week</span>
       </div>
 
       <div class="audience-card aud-families">
-        <span class="aud-emoji">🌱</span>
+        <img src="Sample Images/sunbear-family.svg" class="aud-emoji" alt="" aria-hidden="true" width="72" height="84">
         <div class="aud-title">For Families</div>
         <div class="aud-desc"><strong>At-Home Readiness Tools:</strong> Play-based activity guides and milestone trackers that bridge home and classroom. Support your child's development where it matters most.</div>
         <span class="aud-stat">✦ Ages 2–6</span>
       </div>
 
       <div class="audience-card aud-operators">
-        <span class="aud-emoji">📈</span>
+        <img src="Sample Images/sunbear-operator.svg" class="aud-emoji" alt="" aria-hidden="true" width="72" height="84">
         <div class="aud-title">For Program Operators</div>
         <div class="aud-desc"><strong>Data-Driven Program Impact:</strong> Instant cohort reporting and grant-ready documentation. Translate complex developmental data into actionable insights for funders and staff.</div>
         <span class="aud-stat">✦ Grant-ready</span>

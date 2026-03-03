@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 84" fill="none">
+
+  <!-- 8 sunflower petals around center (40,40) -->
+  <path d="M40,40 C31,41 35,20 40,19 C45,20 49,41 40,40" fill="#F5C200" stroke="#1A2D28" stroke-width="1.1" transform="rotate(0,40,40)"/>
+  <path d="M40,40 C31,41 35,20 40,19 C45,20 49,41 40,40" fill="#F5C200" stroke="#1A2D28" stroke-width="1.1" transform="rotate(45,40,40)"/>
+  <path d="M40,40 C31,41 35,20 40,19 C45,20 49,41 40,40" fill="#F5C200" stroke="#1A2D28" stroke-width="1.1" transform="rotate(90,40,40)"/>
+  <path d="M40,40 C31,41 35,20 40,19 C45,20 49,41 40,40" fill="#F5C200" stroke="#1A2D28" stroke-width="1.1" transform="rotate(135,40,40)"/>
+  <path d="M40,40 C31,41 35,20 40,19 C45,20 49,41 40,40" fill="#F5C200" stroke="#1A2D28" stroke-width="1.1" transform="rotate(180,40,40)"/>
+  <path d="M40,40 C31,41 35,20 40,19 C45,20 49,41 40,40" fill="#F5C200" stroke="#1A2D28" stroke-width="1.1" transform="rotate(225,40,40)"/>
+  <path d="M40,40 C31,41 35,20 40,19 C45,20 49,41 40,40" fill="#F5C200" stroke="#1A2D28" stroke-width="1.1" transform="rotate(270,40,40)"/>
+  <path d="M40,40 C31,41 35,20 40,19 C45,20 49,41 40,40" fill="#F5C200" stroke="#1A2D28" stroke-width="1.1" transform="rotate(315,40,40)"/>
+
+  <!-- Left ear -->
+  <circle cx="29" cy="28" r="6.5" fill="#9B6845" stroke="#1A2D28" stroke-width="1.1"/>
+  <circle cx="29" cy="28.5" r="3.8" fill="#C49570"/>
+  <!-- Right ear -->
+  <circle cx="51" cy="28" r="6.5" fill="#9B6845" stroke="#1A2D28" stroke-width="1.1"/>
+  <circle cx="51" cy="28.5" r="3.8" fill="#C49570"/>
+
+  <!-- Bear face -->
+  <ellipse cx="40" cy="40" rx="16" ry="15" fill="#9B6845" stroke="#1A2D28" stroke-width="1.3"/>
+  <!-- Muzzle -->
+  <ellipse cx="40" cy="45" rx="7" ry="8" fill="#D4AA7C"/>
+  <!-- Left eye -->
+  <circle cx="33" cy="36" r="2.2" fill="#1A2D28"/>
+  <circle cx="33.8" cy="35.2" r="0.85" fill="white"/>
+  <!-- Right eye -->
+  <circle cx="47" cy="36" r="2.2" fill="#1A2D28"/>
+  <circle cx="47.8" cy="35.2" r="0.85" fill="white"/>
+  <!-- Nose -->
+  <ellipse cx="40" cy="42" rx="1.8" ry="1.4" fill="#1A2D28"/>
+
+  <!-- SEEDLING / SPROUT below face -->
+  <!-- Main stem -->
+  <path d="M40,60 Q41,68 40,78" stroke="#2E8050" stroke-width="3" stroke-linecap="round" fill="none"/>
+  <!-- Left leaf (angled left) -->
+  <g transform="translate(33,68) rotate(-28)">
+    <ellipse cx="0" cy="0" rx="8" ry="3.2" fill="#4BAF94" stroke="#1A2D28" stroke-width="0.9"/>
+  </g>
+  <!-- Right leaf (angled right) -->
+  <g transform="translate(47,73) rotate(28)">
+    <ellipse cx="0" cy="0" rx="8" ry="3.2" fill="#4BAF94" stroke="#1A2D28" stroke-width="0.9"/>
+  </g>
+  <!-- Small sprout leaves at top of stem -->
+  <g transform="translate(37,60) rotate(-22)">
+    <ellipse cx="0" cy="0" rx="5.5" ry="2.4" fill="#4BAF94" stroke="#1A2D28" stroke-width="0.9"/>
+  </g>
+  <g transform="translate(43,60) rotate(22)">
+    <ellipse cx="0" cy="0" rx="5.5" ry="2.4" fill="#4BAF94" stroke="#1A2D28" stroke-width="0.9"/>
+  </g>
+
+  <!-- Small floating heart (top-left) -->
+  <path d="M14,14 C14,11.8 16.5,10.5 18,13 C19.5,10.5 22,11.8 22,14 C22,17 18,20 18,20 C18,20 14,17 14,14 Z" fill="#F06878" stroke="#1A2D28" stroke-width="0.8"/>
+  <!-- Small floating heart (top-right) -->
+  <path d="M58,14 C58,11.8 60.5,10.5 62,13 C63.5,10.5 66,11.8 66,14 C66,17 62,20 62,20 C62,20 58,17 58,14 Z" fill="#F06878" stroke="#1A2D28" stroke-width="0.8"/>
+
+</svg>
