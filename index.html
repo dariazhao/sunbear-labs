@@ -670,8 +670,12 @@
       .cta-strip       { flex-direction: column; padding: 44px 32px; }
       .cta-strip-graphic { display: none; }
       .nav-links       { display: none; }
-      /* Hide the secondary outline button in nav on mobile — keep only "Get started" */
-      .nav-inner > div > .btn-outline { display: none; }
+      /* Shrink both nav buttons on mobile so they fit side by side */
+      .nav-inner > div > .btn-outline,
+      .nav-inner > div > .btn-primary {
+        font-size: 11px;
+        padding: 7px 12px;
+      }
       .labs-inner      { grid-template-columns: 1fr; }
       /* FAQ — single column on tablet/mobile */
       .faq-layout      { grid-template-columns: 1fr; gap: 32px; }
