@@ -242,21 +242,27 @@
     .aud-body { width: 100%; }
     /* Entrance reveal */
     .audience-card.anim-in { opacity: 1; transform: translateY(0); }
-    /* Title — bold heading */
+    /* Title — bold heading, sits inline with icon */
     .aud-title {
-      display: block;
       font-family: 'Inter', sans-serif; font-size: 17px; font-weight: 700;
-      color: var(--text-1);
-      margin: 20px 0 12px; letter-spacing: 0; text-transform: none;
+      color: var(--text-1); margin: 0; letter-spacing: 0; text-transform: none;
     }
     /* Description */
     .aud-desc { font-family: 'Inter', sans-serif; font-size: 14px; color: var(--text-2); line-height: 1.65; }
-    /* Stat chip */
+    /* Stat chip — floating */
     .aud-stat {
       display: inline-block; font-family: 'Inter', sans-serif;
       font-size: 11px; font-weight: 600; letter-spacing: .03em;
       padding: 3px 10px; border-radius: 999px; margin-top: 14px;
       background: var(--yellow-light); color: var(--text-2);
+      animation: aud-float 2.8s ease-in-out infinite;
+    }
+    .audience-card:nth-child(1) .aud-stat { animation-delay: 0s; }
+    .audience-card:nth-child(2) .aud-stat { animation-delay: 0.45s; }
+    .audience-card:nth-child(3) .aud-stat { animation-delay: 0.9s; }
+    @keyframes aud-float {
+      0%, 100% { transform: translateY(0px); }
+      50%       { transform: translateY(-5px); }
     }
 
     /* ══════════════════════════
@@ -466,9 +472,13 @@
     /* ── em-after: plain text, no special treatment ── */
     .em-after { color: inherit; font-weight: inherit; font-style: normal; }
 
+    /* ── Audience icon + title header row ── */
+    .aud-header {
+      display: flex; align-items: center; gap: 12px; margin-bottom: 14px;
+    }
     /* ── Audience icon badge — per-card pastel colors ── */
     .aud-icon {
-      width: 58px; height: 58px; flex-shrink: 0; border-radius: 14px;
+      width: 40px; height: 40px; flex-shrink: 0; border-radius: 10px;
       background: #FEF3C7; border: none;
       display: flex; align-items: center; justify-content: center;
       transition: transform 0.28s cubic-bezier(.34,1.56,.64,1);
@@ -962,46 +972,52 @@
     <div class="audience-grid">
 
       <div class="audience-card aud-educators">
-        <div class="aud-icon icon-green">
-          <svg width="24" height="24" viewBox="0 0 20 20" fill="none">
-            <path d="M10 6C10 6 7.5 5 4 5.5V15C7.5 14.5 10 15.5 10 15.5" stroke="#101828" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M10 6C10 6 12.5 5 16 5.5V15C12.5 14.5 10 15.5 10 15.5" stroke="#101828" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            <line x1="10" y1="6" x2="10" y2="15.5" stroke="#101828" stroke-width="1.2" stroke-linecap="round"/>
-          </svg>
+        <div class="aud-header">
+          <div class="aud-icon icon-green">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path d="M10 6C10 6 7.5 5 4 5.5V15C7.5 14.5 10 15.5 10 15.5" stroke="#101828" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M10 6C10 6 12.5 5 16 5.5V15C12.5 14.5 10 15.5 10 15.5" stroke="#101828" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <line x1="10" y1="6" x2="10" y2="15.5" stroke="#101828" stroke-width="1.2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="aud-title">For Educators</div>
         </div>
         <div class="aud-body">
-          <div class="aud-title">For Educators</div>
           <div class="aud-desc">Evidence-based curricula, assessment rubrics, and progress tracking built for Pre-K and Head Start classrooms.</div>
           <span class="aud-stat">✦ Saves 3+ hrs/week</span>
         </div>
       </div>
 
       <div class="audience-card aud-families">
-        <div class="aud-icon">
-          <svg width="24" height="24" viewBox="0 0 20 20" fill="none">
-            <path d="M3 9.5L10 3l7 6.5" stroke="#101828" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M5 8.5V17h10V8.5" stroke="#101828" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            <rect x="8" y="12.5" width="4" height="4.5" rx=".5" stroke="#101828" stroke-width="1.2"/>
-          </svg>
+        <div class="aud-header">
+          <div class="aud-icon">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path d="M3 9.5L10 3l7 6.5" stroke="#101828" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M5 8.5V17h10V8.5" stroke="#101828" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <rect x="8" y="12.5" width="4" height="4.5" rx=".5" stroke="#101828" stroke-width="1.2"/>
+            </svg>
+          </div>
+          <div class="aud-title">For Families</div>
         </div>
         <div class="aud-body">
-          <div class="aud-title">For Families</div>
           <div class="aud-desc">At-home activity guides, school readiness checklists, and milestone trackers that bridge home and classroom.</div>
           <span class="aud-stat">✦ Ages 2–6</span>
         </div>
       </div>
 
       <div class="audience-card aud-operators">
-        <div class="aud-icon icon-purple">
-          <svg width="24" height="24" viewBox="0 0 20 20" fill="none">
-            <rect x="3.5" y="5" width="13" height="12" rx="1.2" stroke="#101828" stroke-width="1.5"/>
-            <line x1="3.5" y1="9" x2="16.5" y2="9" stroke="#101828" stroke-width="1.2"/>
-            <line x1="10"  y1="5" x2="10"   y2="17" stroke="#101828" stroke-width="1.2"/>
-            <path d="M7 3h6" stroke="#101828" stroke-width="1.5" stroke-linecap="round"/>
-          </svg>
+        <div class="aud-header">
+          <div class="aud-icon icon-purple">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <rect x="3.5" y="5" width="13" height="12" rx="1.2" stroke="#101828" stroke-width="1.5"/>
+              <line x1="3.5" y1="9" x2="16.5" y2="9" stroke="#101828" stroke-width="1.2"/>
+              <line x1="10"  y1="5" x2="10"   y2="17" stroke="#101828" stroke-width="1.2"/>
+              <path d="M7 3h6" stroke="#101828" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="aud-title">For Program Operators</div>
         </div>
         <div class="aud-body">
-          <div class="aud-title">For Program Operators</div>
           <div class="aud-desc">Program management, cohort reporting, grant documentation, and staff training for community orgs and childcare networks.</div>
           <span class="aud-stat">✦ Grant-ready</span>
         </div>
