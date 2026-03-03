@@ -222,40 +222,40 @@
       background: var(--bg-beige);
       border-top: 1px solid var(--border);
       border-bottom: 1px solid var(--border);
-      padding: 40px 0;
+      padding: 64px 0;
     }
     .audience-grid {
-      display: grid; grid-template-columns: repeat(3,1fr); gap: 14px;
+      display: grid; grid-template-columns: repeat(3,1fr); gap: 0;
     }
     .audience-card {
-      background: #FFFFFF;
-      border: 1px solid var(--border);
-      border-radius: var(--radius-card);
-      padding: 20px 22px;
-      display: flex; flex-direction: row; align-items: flex-start; gap: 14px;
-      transition: box-shadow 0.22s ease, transform 0.22s ease, opacity 0.5s ease;
+      background: transparent;
+      border: none;
+      border-right: 1px solid var(--border);
+      padding: 0 48px 0 0;
+      margin-right: 48px;
+      display: flex; flex-direction: column; align-items: flex-start;
+      transition: opacity 0.5s ease, transform 0.5s ease;
       opacity: 0;
       transform: translateY(20px);
     }
-    .aud-body { flex: 1; min-width: 0; }
+    .audience-card:last-child { border-right: none; margin-right: 0; }
+    .aud-body { width: 100%; }
     /* Entrance reveal */
     .audience-card.anim-in { opacity: 1; transform: translateY(0); }
-    .audience-card.anim-in:hover { box-shadow: var(--shadow-lg); transform: translateY(-3px); }
-    /* Label — plain uppercase, no pill */
+    /* Title — bold heading */
     .aud-title {
       display: block;
-      font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 700;
-      letter-spacing: .09em; text-transform: uppercase;
-      color: var(--text-3); margin-bottom: 6px;
+      font-family: 'Inter', sans-serif; font-size: 17px; font-weight: 700;
+      color: var(--text-1);
+      margin: 20px 0 12px; letter-spacing: 0; text-transform: none;
     }
     /* Description */
-    .aud-desc { font-family: 'Inter', sans-serif; font-size: 13px; color: var(--text-2); line-height: 1.6; }
-    .aud-desc strong { font-family: 'Nunito', sans-serif; font-size: 13px; font-weight: 800; color: var(--text-1); }
-    /* Stat chip — unified yellow accent */
+    .aud-desc { font-family: 'Inter', sans-serif; font-size: 14px; color: var(--text-2); line-height: 1.65; }
+    /* Stat chip */
     .aud-stat {
       display: inline-block; font-family: 'Inter', sans-serif;
       font-size: 11px; font-weight: 600; letter-spacing: .03em;
-      padding: 3px 10px; border-radius: 999px; margin-top: 10px;
+      padding: 3px 10px; border-radius: 999px; margin-top: 14px;
       background: var(--yellow-light); color: var(--text-2);
     }
 
@@ -466,15 +466,16 @@
     /* ── em-after: plain text, no special treatment ── */
     .em-after { color: inherit; font-weight: inherit; font-style: normal; }
 
-    /* ── Audience icon badge — unified yellow ── */
+    /* ── Audience icon badge — per-card pastel colors ── */
     .aud-icon {
-      width: 40px; height: 40px; flex-shrink: 0; border-radius: 10px;
-      background: var(--yellow); border: none;
+      width: 58px; height: 58px; flex-shrink: 0; border-radius: 14px;
+      background: #FEF3C7; border: none;
       display: flex; align-items: center; justify-content: center;
-      margin-top: 1px;
       transition: transform 0.28s cubic-bezier(.34,1.56,.64,1);
     }
-    .audience-card:hover .aud-icon { transform: scale(1.1); }
+    .aud-icon.icon-green  { background: #C8EDE6; }
+    .aud-icon.icon-purple { background: #E8E0F4; }
+    .audience-card:hover .aud-icon { transform: scale(1.08); }
 
     /* ══════════════════════════
        FAQ ACCORDION
@@ -712,8 +713,9 @@
     ══════════════════════════ */
     @media (max-width: 920px) {
       .features-grid   { grid-template-columns: 1fr; }
-      .audience-grid   { grid-template-columns: 1fr; gap: 10px; }
-      .audience-card   { padding: 16px 18px; gap: 12px; border-radius: 12px; }
+      .audience-grid   { grid-template-columns: 1fr; gap: 0; }
+      .audience-card   { border-right: none; border-bottom: 1px solid var(--border); padding: 0 0 32px; margin-right: 0; margin-bottom: 32px; }
+      .audience-card:last-child { border-bottom: none; margin-bottom: 0; }
       .resources-grid  { grid-template-columns: 1fr 1fr; }
       .stats-grid      { grid-template-columns: 1fr 1fr; gap: 0; }
       .stat-item       { border-right: none; padding: 24px 16px; }
@@ -961,7 +963,7 @@
 
       <div class="audience-card aud-educators">
         <div class="aud-icon icon-green">
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <svg width="24" height="24" viewBox="0 0 20 20" fill="none">
             <path d="M10 6C10 6 7.5 5 4 5.5V15C7.5 14.5 10 15.5 10 15.5" stroke="#101828" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
             <path d="M10 6C10 6 12.5 5 16 5.5V15C12.5 14.5 10 15.5 10 15.5" stroke="#101828" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
             <line x1="10" y1="6" x2="10" y2="15.5" stroke="#101828" stroke-width="1.2" stroke-linecap="round"/>
@@ -969,14 +971,14 @@
         </div>
         <div class="aud-body">
           <div class="aud-title">For Educators</div>
-          <div class="aud-desc"><strong>Standards-Aligned Activities:</strong> ELOF-aligned activity planning and rubrics — less paperwork, more teaching time.</div>
+          <div class="aud-desc">Evidence-based curricula, assessment rubrics, and progress tracking built for Pre-K and Head Start classrooms.</div>
           <span class="aud-stat">✦ Saves 3+ hrs/week</span>
         </div>
       </div>
 
       <div class="audience-card aud-families">
         <div class="aud-icon">
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <svg width="24" height="24" viewBox="0 0 20 20" fill="none">
             <path d="M3 9.5L10 3l7 6.5" stroke="#101828" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
             <path d="M5 8.5V17h10V8.5" stroke="#101828" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
             <rect x="8" y="12.5" width="4" height="4.5" rx=".5" stroke="#101828" stroke-width="1.2"/>
@@ -984,14 +986,14 @@
         </div>
         <div class="aud-body">
           <div class="aud-title">For Families</div>
-          <div class="aud-desc"><strong>At-Home Readiness Tools:</strong> Play-based guides and milestone trackers that bridge home and classroom.</div>
+          <div class="aud-desc">At-home activity guides, school readiness checklists, and milestone trackers that bridge home and classroom.</div>
           <span class="aud-stat">✦ Ages 2–6</span>
         </div>
       </div>
 
       <div class="audience-card aud-operators">
         <div class="aud-icon icon-purple">
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <svg width="24" height="24" viewBox="0 0 20 20" fill="none">
             <rect x="3.5" y="5" width="13" height="12" rx="1.2" stroke="#101828" stroke-width="1.5"/>
             <line x1="3.5" y1="9" x2="16.5" y2="9" stroke="#101828" stroke-width="1.2"/>
             <line x1="10"  y1="5" x2="10"   y2="17" stroke="#101828" stroke-width="1.2"/>
@@ -1000,7 +1002,7 @@
         </div>
         <div class="aud-body">
           <div class="aud-title">For Program Operators</div>
-          <div class="aud-desc"><strong>Data-Driven Impact:</strong> Instant cohort reports and grant-ready documentation for funders and staff.</div>
+          <div class="aud-desc">Program management, cohort reporting, grant documentation, and staff training for community orgs and childcare networks.</div>
           <span class="aud-stat">✦ Grant-ready</span>
         </div>
       </div>
