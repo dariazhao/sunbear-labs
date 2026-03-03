@@ -260,13 +260,6 @@
     .audience-card.aud-educators::before { background: radial-gradient(circle, rgba(75,175,148,.16) 0%, transparent 70%); }
     .audience-card.aud-families::before  { background: radial-gradient(circle, rgba(255,202,0,.2) 0%, transparent 70%); }
     .audience-card.aud-operators::before { background: radial-gradient(circle, rgba(205,144,227,.16) 0%, transparent 70%); }
-    /* Emoji icon */
-    .aud-emoji {
-      font-size: 28px; flex-shrink: 0; display: block;
-      line-height: 1; margin-top: 3px;
-      transition: transform 0.38s cubic-bezier(.34,1.56,.64,1);
-    }
-    .audience-card:hover .aud-emoji { transform: scale(1.2) rotate(-7deg); }
     /* Pill tag */
     .aud-title {
       display: inline-flex; align-items: center;
@@ -500,7 +493,15 @@
     /* ── em-after: plain text, no special treatment ── */
     .em-after { color: inherit; font-weight: inherit; font-style: normal; }
 
-    /* ── Audience icon color variants ── */
+    /* ── Audience icon badges ── */
+    .aud-icon {
+      width: 44px; height: 44px; flex-shrink: 0; border-radius: 12px;
+      background: var(--yellow-light); border: 1.5px solid rgba(255,202,0,.4);
+      display: flex; align-items: center; justify-content: center;
+      margin-top: 1px;
+      transition: transform 0.38s cubic-bezier(.34,1.56,.64,1);
+    }
+    .audience-card:hover .aud-icon { transform: scale(1.12) rotate(-5deg); }
     .aud-icon.icon-green  { background: var(--teal); border-color: rgba(75,175,148,.4); }
     .aud-icon.icon-purple { background: var(--purple-light); border-color: rgba(205,144,227,.4); }
     .aud-icon.icon-blue   { background: var(--blue); border-color: rgba(128,175,255,.4); }
@@ -958,7 +959,13 @@
     <div class="audience-grid">
 
       <div class="audience-card aud-educators">
-        <span class="aud-emoji">📖</span>
+        <div class="aud-icon icon-green">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M10 6C10 6 7.5 5 4 5.5V15C7.5 14.5 10 15.5 10 15.5" stroke="#101828" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M10 6C10 6 12.5 5 16 5.5V15C12.5 14.5 10 15.5 10 15.5" stroke="#101828" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <line x1="10" y1="6" x2="10" y2="15.5" stroke="#101828" stroke-width="1.2" stroke-linecap="round"/>
+          </svg>
+        </div>
         <div class="aud-body">
           <div class="aud-title">For Educators</div>
           <div class="aud-desc"><strong>Standards-Aligned Activities:</strong> ELOF-aligned activity planning and rubrics — less paperwork, more teaching time.</div>
@@ -967,7 +974,13 @@
       </div>
 
       <div class="audience-card aud-families">
-        <span class="aud-emoji">🌱</span>
+        <div class="aud-icon">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M3 9.5L10 3l7 6.5" stroke="#101828" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M5 8.5V17h10V8.5" stroke="#101828" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <rect x="8" y="12.5" width="4" height="4.5" rx=".5" stroke="#101828" stroke-width="1.2"/>
+          </svg>
+        </div>
         <div class="aud-body">
           <div class="aud-title">For Families</div>
           <div class="aud-desc"><strong>At-Home Readiness Tools:</strong> Play-based guides and milestone trackers that bridge home and classroom.</div>
@@ -976,7 +989,14 @@
       </div>
 
       <div class="audience-card aud-operators">
-        <span class="aud-emoji">📈</span>
+        <div class="aud-icon icon-purple">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <rect x="3.5" y="5" width="13" height="12" rx="1.2" stroke="#101828" stroke-width="1.5"/>
+            <line x1="3.5" y1="9" x2="16.5" y2="9" stroke="#101828" stroke-width="1.2"/>
+            <line x1="10"  y1="5" x2="10"   y2="17" stroke="#101828" stroke-width="1.2"/>
+            <path d="M7 3h6" stroke="#101828" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </div>
         <div class="aud-body">
           <div class="aud-title">For Program Operators</div>
           <div class="aud-desc"><strong>Data-Driven Impact:</strong> Instant cohort reports and grant-ready documentation for funders and staff.</div>
