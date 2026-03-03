@@ -670,12 +670,11 @@
       .cta-strip       { flex-direction: column; padding: 44px 32px; }
       .cta-strip-graphic { display: none; }
       .nav-links       { display: none; }
-      /* Shrink both nav buttons on mobile so they fit side by side */
-      .nav-actions .btn-outline,
-      .nav-actions .btn-primary {
-        font-size: 11px !important;
-        padding: 7px 12px !important;
-      }
+      /* Hide secondary nav button, keep only "Get started" */
+      .nav-actions .btn-outline { display: none !important; }
+      .nav-actions .btn-primary { font-size: 13px; padding: 9px 18px; }
+      /* Prevent logo wordmark from wrapping */
+      .logo-wordmark   { white-space: nowrap; }
       .labs-inner      { grid-template-columns: 1fr; }
       /* FAQ — single column on tablet/mobile */
       .faq-layout      { grid-template-columns: 1fr; gap: 32px; }
