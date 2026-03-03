@@ -697,24 +697,24 @@
       /* ── Compact mobile footer ── */
       footer           { padding: 32px 0 24px; }
       .footer-inner    { grid-template-columns: 1fr 1fr; gap: 24px 16px; }
-      /* Brand: slim horizontal strip across full width */
+      /* Brand: centered single column spanning full width */
       .footer-brand    {
         grid-column: 1 / -1;
-        flex-direction: row; align-items: center;
-        text-align: left; gap: 12px;
+        flex-direction: column; align-items: center;
+        text-align: center; gap: 0;
         padding-bottom: 20px;
         border-bottom: 1px solid var(--border);
       }
-      .footer-logo-row { flex-direction: row; align-items: center; gap: 8px; margin-bottom: 0; flex-shrink: 0; }
-      .footer-brand img { width: 36px !important; height: 36px !important; }
-      .footer-wm       { font-size: 15px; }
-      .footer-tagline  { font-size: 12px; line-height: 1.5; max-width: none; text-align: left; color: var(--text-3); }
+      .footer-logo-row { flex-direction: column; align-items: center; gap: 8px; margin-bottom: 10px; }
+      .footer-brand img { width: 64px !important; height: 64px !important; }
+      .footer-wm       { font-size: 16px; }
+      .footer-tagline  { font-size: 13px; line-height: 1.6; max-width: 260px; text-align: center; color: var(--text-2); }
       /* Link columns: 2×2 grid */
       .footer-col-title { font-size: 11px; margin-bottom: 10px; letter-spacing: .08em; }
       .footer-col ul   { gap: 7px; }
       .footer-col ul a { font-size: 12px; }
       /* Footer bottom: stack tightly */
-      .footer-bottom   { margin-top: 20px; padding-top: 14px; flex-direction: column; align-items: flex-start; gap: 6px; }
+      .footer-bottom   { margin-top: 20px; padding-top: 14px; flex-direction: column; align-items: center; text-align: center; gap: 6px; }
       .cta-strip       { padding: 36px 24px; border-radius: 14px; }
       /* Hero illustration — minimal overlap on small phones */
       .hero-illustration { margin-top: -60px; }
