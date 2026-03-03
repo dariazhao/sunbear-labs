@@ -671,10 +671,10 @@
       .cta-strip-graphic { display: none; }
       .nav-links       { display: none; }
       /* Shrink both nav buttons on mobile so they fit side by side */
-      .nav-inner > div > .btn-outline,
-      .nav-inner > div > .btn-primary {
-        font-size: 11px;
-        padding: 7px 12px;
+      .nav-actions .btn-outline,
+      .nav-actions .btn-primary {
+        font-size: 11px !important;
+        padding: 7px 12px !important;
       }
       .labs-inner      { grid-template-columns: 1fr; }
       /* FAQ — single column on tablet/mobile */
@@ -793,7 +793,7 @@
         <li><a href="#resources">Resources</a></li>
       </ul>
 
-      <div style="display:flex;gap:10px;align-items:center;">
+      <div class="nav-actions" style="display:flex;gap:10px;align-items:center;">
         <a href="#products" class="btn-outline">See all programs</a>
         <a href="#" class="btn-primary">Get started →</a>
       </div>
