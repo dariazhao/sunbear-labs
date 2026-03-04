@@ -1017,7 +1017,7 @@
 
     <div class="hero-cta-row">
       <a href="#products" class="btn-primary">Explore programs →</a>
-      <a href="#" class="btn-outline">Start for free</a>
+      <a href="get-started.html" class="btn-outline">Start for free</a>
     </div>
   </div>
 
@@ -1366,7 +1366,7 @@
     <div class="cta-content">
       <h2>Build stronger foundations.<br><span class="em-teal">Together.</span></h2>
       <div class="cta-btns">
-        <a href="#" class="btn-dark">Start for free →</a>
+        <a href="get-started.html" class="btn-dark">Start for free →</a>
         <a href="#" class="btn-outline-dark">Talk to our team</a>
       </div>
     </div>
@@ -1711,23 +1711,12 @@
       setTimeout(() => overlay.classList.remove('active'), 950);
     }
 
-    // ── On page exit: intercept all same-site page links.
-    function isSameSiteLink(a) {
-      const href = a.getAttribute('href');
-      if (!href || href.startsWith('#')) return false;          // same-page anchor
-      if (/^(mailto|tel|javascript):/i.test(href)) return false;
-      if (a.target === '_blank') return false;                  // new tab
-      if (/^https?:\/\//i.test(href)) return false;            // external URL
-      return true;
-    }
-
-    document.querySelectorAll('a').forEach(link => {
-      if (!isSameSiteLink(link)) return;
+    // ── Only trigger overlay for "Get started" / "Start for free" → get-started.html
+    document.querySelectorAll('a[href="get-started.html"]').forEach(link => {
       link.addEventListener('click', e => {
         e.preventDefault();
-        const dest = link.getAttribute('href');
         sessionStorage.setItem('ps-nav', '1');
-        window.location.href = dest;
+        window.location.href = 'get-started.html';
       });
     });
   })();
