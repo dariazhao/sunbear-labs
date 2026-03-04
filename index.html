@@ -8,13 +8,13 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://sunbear-labs.vercel.app/">
   <meta property="og:title" content="Sunbear Labs – Kindergarten Readiness Lab">
-  <meta property="og:description" content="Equipping educators, families, and program operators with tools to ensure every child enters Kindergarten ready to thrive.">
+  <meta property="og:description" content="Equipping educators, families, and program operators with tools to ensure every child enters kindergarten ready to thrive.">
   <meta property="og:image" content="https://sunbear-labs.vercel.app/Sample%20Images/floralbottom.png">
   <meta property="og:image:type" content="image/png">
   <!-- Twitter / X card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Sunbear Labs – Kindergarten Readiness Lab">
-  <meta name="twitter:description" content="Equipping educators, families, and program operators with tools to ensure every child enters Kindergarten ready to thrive.">
+  <meta name="twitter:description" content="Equipping educators, families, and program operators with tools to ensure every child enters kindergarten ready to thrive.">
   <meta name="twitter:image" content="https://sunbear-labs.vercel.app/Sample%20Images/floralbottom.png">
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0NCA0NCI+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMjIsMjIpIj48ZyBmaWxsPSIjRjVDMjAwIiBzdHJva2U9IiMxQTJEMjgiIHN0cm9rZS13aWR0aD0iMS4zIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cGF0aCBkPSJNMCwwIEMtMTAsMSwtNiwtMTYsMCwtMTcgQzYsLTE2LDEwLDEsMCwwIi8+PHBhdGggZD0iTTAsMCBDLTEwLDEsLTYsLTE2LDAsLTE3IEM2LC0xNiwxMCwxLDAsMCIgdHJhbnNmb3JtPSJyb3RhdGUoNDUpIi8+PHBhdGggZD0iTTAsMCBDLTEwLDEsLTYsLTE2LDAsLTE3IEM2LC0xNiwxMCwxLDAsMCIgdHJhbnNmb3JtPSJyb3RhdGUoOTApIi8+PHBhdGggZD0iTTAsMCBDLTEwLDEsLTYsLTE2LDAsLTE3IEM2LC0xNiwxMCwxLDAsMCIgdHJhbnNmb3JtPSJyb3RhdGUoMTM1KSIvPjxwYXRoIGQ9Ik0wLDAgQy0xMCwxLC02LC0xNiwwLC0xNyBDNiwtMTYsMTAsMSwwLDAiIHRyYW5zZm9ybT0icm90YXRlKDE4MCkiLz48cGF0aCBkPSJNMCwwIEMtMTAsMSwtNiwtMTYsMCwtMTcgQzYsLTE2LDEwLDEsMCwwIiB0cmFuc2Zvcm09InJvdGF0ZSgyMjUpIi8+PHBhdGggZD0iTTAsMCBDLTEwLDEsLTYsLTE2LDAsLTE3IEM2LC0xNiwxMCwxLDAsMCIgdHJhbnNmb3JtPSJyb3RhdGUoMjcwKSIvPjxwYXRoIGQ9Ik0wLDAgQy0xMCwxLC02LC0xNiwwLC0xNyBDNiwtMTYsMTAsMSwwLDAiIHRyYW5zZm9ybT0icm90YXRlKDMxNSkiLz48L2c+PC9nPjxjaXJjbGUgY3g9IjEzIiBjeT0iMTMiIHI9IjUiIGZpbGw9IiM5QjY4NDUiIHN0cm9rZT0iIzFBMkQyOCIgc3Ryb2tlLXdpZHRoPSIxLjEiLz48Y2lyY2xlIGN4PSIxMyIgY3k9IjEzLjUiIHI9IjIuOCIgZmlsbD0iI0M0OTU3MCIvPjxjaXJjbGUgY3g9IjMxIiBjeT0iMTMiIHI9IjUiIGZpbGw9IiM5QjY4NDUiIHN0cm9rZT0iIzFBMkQyOCIgc3Ryb2tlLXdpZHRoPSIxLjEiLz48Y2lyY2xlIGN4PSIzMSIgY3k9IjEzLjUiIHI9IjIuOCIgZmlsbD0iI0M0OTU3MCIvPjxjaXJjbGUgY3g9IjIyIiBjeT0iMjIiIHI9IjEwLjUiIGZpbGw9IiM5QjY4NDUiIHN0cm9rZT0iIzFBMkQyOCIgc3Ryb2tlLXdpZHRoPSIxLjMiLz48ZWxsaXBzZSBjeD0iMjIiIGN5PSIyOCIgcng9IjYuNSIgcnk9IjQuNSIgZmlsbD0iI0Q0QUE3QyIvPjwvc3ZnPg==">
@@ -485,7 +485,71 @@
     }
     .aud-icon.icon-green  { background: #C8EDE6; }
     .aud-icon.icon-purple { background: #E8E0F4; }
-    .audience-card:hover .aud-icon { transform: scale(1.08); }
+
+    /* ══ PERSONA HOVER — exaggerated, kid-product fun ══ */
+
+    /* Educators: page-flip spin */
+    @keyframes aud-pop-educators {
+      0%   { transform: scale(1) rotate(0deg); }
+      20%  { transform: scale(1.315) rotate(-14deg); }
+      40%  { transform: scale(1.245) rotate(11deg); }
+      60%  { transform: scale(1.28) rotate(-7deg); }
+      80%  { transform: scale(1.21) rotate(3.5deg); }
+      100% { transform: scale(1.154) rotate(0deg); }
+    }
+    /* Families: double heartbeat pulse */
+    @keyframes aud-pop-families {
+      0%   { transform: scale(1); }
+      15%  { transform: scale(1.35); }
+      30%  { transform: scale(1.175); }
+      45%  { transform: scale(1.315); }
+      60%  { transform: scale(1.14); }
+      80%  { transform: scale(1.21); }
+      100% { transform: scale(1.126); }
+    }
+    /* Operators: full spin and stick the landing */
+    @keyframes aud-pop-operators {
+      0%   { transform: scale(1) rotate(0deg); }
+      40%  { transform: scale(1.28) rotate(147deg); }
+      70%  { transform: scale(1.196) rotate(242deg); }
+      85%  { transform: scale(1.224) rotate(352deg); }
+      100% { transform: scale(1.154) rotate(360deg); }
+    }
+
+    .aud-educators:hover .aud-icon {
+      animation: aud-pop-educators 0.55s cubic-bezier(.34,1.56,.64,1) forwards;
+      background: #7DD5C8 !important;
+    }
+    .aud-families:hover .aud-icon {
+      animation: aud-pop-families 0.6s ease forwards;
+      background: var(--yellow) !important;
+    }
+    .aud-operators:hover .aud-icon {
+      animation: aud-pop-operators 0.65s cubic-bezier(.34,1.56,.64,1) forwards;
+      background: #B48FDE !important;
+    }
+
+    /* Stat chip: bounce-launch + glow */
+    @keyframes aud-stat-launch {
+      0%   { transform: translateY(0) scale(1); }
+      35%  { transform: translateY(-10px) scale(1.126); }
+      55%  { transform: translateY(-7px) scale(1.056); }
+      72%  { transform: translateY(-9px) scale(1.098); }
+      100% { transform: translateY(-7px) scale(1.042); }
+    }
+    .audience-card:hover .aud-stat {
+      animation: aud-stat-launch 0.45s cubic-bezier(.34,1.56,.64,1) forwards;
+      background: var(--yellow) !important;
+      box-shadow: 0 8px 24px rgba(255,202,0,.45);
+    }
+
+    /* Title: slide-right + teal */
+    .aud-title { transition: transform 0.25s ease, color 0.25s ease; }
+    .audience-card:hover .aud-title { transform: translateX(6px); color: var(--teal-dark); }
+
+    /* Description: sharpen up */
+    .aud-desc { transition: color 0.25s ease; }
+    .audience-card:hover .aud-desc { color: var(--text-1); }
 
     /* ══════════════════════════
        FAQ ACCORDION
@@ -665,9 +729,37 @@
     /* ── Resource thumbnail with real images ── */
     .resource-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
-    /* ── Floral divider ── */
-    .floral-divider { line-height: 0; overflow: hidden; margin-top: 0; }
-    .floral-divider img { display: block; width: 100%; height: auto; }
+    /* ── Floral divider — alive ── */
+    .floral-divider {
+      line-height: 0; overflow: hidden; margin-top: 0;
+      position: relative;
+      /* extend top slightly so parallax translateY up never shows white gap */
+      margin-top: -2px;
+    }
+    /* Scale-breathing wrapper — animates independently from the parallax img */
+    .floral-scale-wrap {
+      width: 100%;
+      transform-origin: center bottom;
+      will-change: transform;
+      /* initial: desaturated/dim — blooms to full color when in-view */
+      filter: saturate(0.7) brightness(0.92);
+      transition: filter 2.8s ease;
+    }
+    .floral-divider.in-view .floral-scale-wrap {
+      filter: saturate(1.08) brightness(1.01);
+      animation: floral-grow 11s ease-in-out infinite alternate;
+    }
+    @keyframes floral-grow {
+      0%   { transform: scale(1.0); }
+      100% { transform: scale(1.065); }
+    }
+    /* The img itself handles parallax translate via JS */
+    .floral-divider img {
+      display: block; width: 100%; height: auto;
+      will-change: transform;
+      /* overshoot slightly so scroll parallax up never reveals the container edge */
+      margin-bottom: -4px;
+    }
 
     /* ══════════════════════════
        VISION CAROUSEL
@@ -887,7 +979,7 @@
 
       <div class="nav-actions" style="display:flex;gap:10px;align-items:center;">
         <a href="#products" class="btn-outline">Explore programs</a>
-        <a href="#" class="btn-primary">Get started →</a>
+        <a href="get-started.html" class="btn-primary">Get started →</a>
       </div>
 
     </div>
@@ -900,12 +992,12 @@
 ══════════════════════════════════ -->
 <section class="hero">
   <div class="container">
-    <div class="hero-eyebrow">Kindergarten Readiness Lab</div>
+    <div class="hero-eyebrow">kindergarten readiness lab</div>
 
     <h1><span class="em-teal">Every child,</span> ready for<br>what comes next.</h1>
 
     <p class="hero-sub">
-      Sunbear Labs equips Pre-K educators, families, and program operators with the tools to ensure every child enters Kindergarten ready to thrive.
+      Sunbear Labs equips pre-K educators, families, and program operators with the tools to ensure every child enters kindergarten ready to thrive.
     </p>
 
     <!-- Video thumbnail — click to play -->
@@ -950,7 +1042,7 @@
       <div class="labs-copy">
         <div class="section-label">About Us</div>
         <h2>Science-backed. Field-tested. <span class="em-teal" style="white-space:nowrap">Free to start.</span></h2>
-        <p class="section-sub">We believe every child deserves to thrive in Pre-K — and walk into Kindergarten ready. And every educator, family, and program deserves the tools to make that happen.</p>
+        <p class="section-sub">We believe every child deserves to be kindergarten-ready from day one. And every educator, family, and program deserves the tools to make that happen.</p>
         <ul class="labs-bullets">
           <li>Activities aligned to state K-entry standards</li>
           <li>Frameworks grounded in early childhood development research</li>
@@ -983,7 +1075,7 @@
           <div class="aud-title">For Educators</div>
         </div>
         <div class="aud-body">
-          <div class="aud-desc">Evidence-based curricula, assessment rubrics, and progress tracking built for Early Learning environments and Head Start programs.</div>
+          <div class="aud-desc">Evidence-based curricula, activity guides, and progress tracking built for Early Learning environments and Head Start programs.</div>
           <span class="aud-stat">✦ Saves 3+ hrs/week</span>
         </div>
       </div>
@@ -1042,12 +1134,12 @@
 
       <div class="feature-card stripe-yellow">
         <div class="feat-img-wrap">
-          <img src="Sample Images/checklist.svg" alt="Readiness assessment checklist illustration">
+          <img src="Sample Images/checklist.svg" alt="Readiness activity checklist illustration">
         </div>
         <div class="feat-body">
-          <div class="feat-title">Readiness Assessments</div>
-          <div class="feat-desc">Standardized, play-based screening tools aligned to state kindergarten entry expectations. Administer in under 20 minutes; generate shareable reports instantly.</div>
-          <a href="#" class="feat-link link-yellow">Explore assessments →</a>
+          <div class="feat-title">Readiness Activities</div>
+          <div class="feat-desc">Play-based activity kits designed around the skills children need entering kindergarten. Structured for real classroom use, with shareable family summaries included.</div>
+          <a href="#" class="feat-link link-yellow">Explore activities →</a>
         </div>
       </div>
 
@@ -1130,87 +1222,75 @@
     <div class="carousel-outer">
       <div class="carousel-track" id="visionTrack">
 
-        <!-- Card 6 first in DOM so it peeks left of card 1 on load -->
+        <!-- Card 5 (peek left) — Recognition: credibility anchor -->
         <div class="c-card">
-          <div class="c-img" style="background:#FFF0E8;">
-            <img src="Sample Images/wins.svg" alt="Celebration illustration">
+          <div class="c-img photo">
+            <img src="https://substack-post-media.s3.amazonaws.com/public/images/29499f0a-4e2b-43c2-b2d8-ec5725d6a020_600x337.gif" alt="Mochi product recognition">
           </div>
           <div class="c-body">
             <div class="c-tag">What's next</div>
-            <div class="c-title">Sunbear Labs, est. 2026.</div>
-            <p class="c-text">Same ethos. Bigger mission. Assessments, curriculum frameworks, and family resources built to close the Kindergarten readiness gap — starting in Pre-K, before it ever has a chance to open.</p>
+            <div class="c-title">Join the movement.</div>
+            <p class="c-text">Same ethos. Bigger mission. Activities, frameworks, and family-friendly resources -- all for pre-K, on demand.</p>
           </div>
         </div>
 
-        <!-- Card 1 — Vision (graphic) — default active -->
+        <!-- Card 0 — Mission — default active -->
         <div class="c-card active">
           <div class="c-img" style="background:#E8F4EE;">
             <img src="Sample Images/hilltop_crop.png" alt="Hilltop illustration">
           </div>
           <div class="c-body">
-            <div class="c-tag">Our vision</div>
-            <div class="c-title">Every child, ready.</div>
-            <p class="c-text">Learning should never depend on your zip code. Every child deserves to thrive in Pre-K and walk into Kindergarten ready for what comes next.</p>
+            <div class="c-tag">Our mission</div>
+            <div class="c-title">Every child, kindergarten-ready.</div>
+            <p class="c-text">Learning should never depend on your zip code. Sunbear Labs exists to close the kindergarten readiness gap, before it ever has a chance to begin.</p>
           </div>
         </div>
 
-        <!-- Card 2 — Mochi origin (Kickstarter film day photo) -->
+        <!-- Card 2 — How it started -->
         <div class="c-card">
           <div class="c-img photo">
-            <img src="https://substackcdn.com/image/fetch/$s_!cZTW!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0e75c53e-37b0-4ee5-b674-3f958ea57f86_936x529.webp" alt="Kickstarter film day">
+            <img src="https://substack-post-media.s3.amazonaws.com/public/images/0e75c53e-37b0-4ee5-b674-3f958ea57f86_936x529.webp" alt="Mochi Kickstarter film day">
           </div>
           <div class="c-body">
-            <div class="c-tag">Where it started</div>
+            <div class="c-tag">How it started</div>
             <div class="c-title">A decade in the making.</div>
-            <p class="c-text">In 2018, we left investment banking and biomedical engineering to build <a href="https://learnwithmochi.com/" target="_blank" rel="noopener noreferrer" style="color:var(--teal-dark); font-weight:600;">Learn With Mochi</a>. A screen-free, story-driven coding kit loved by families in 60+ countries around the world.</p>
+            <p class="c-text">In 2018, we left banking and biomedical engineering to solve a problem too big to ignore: hands-on, screen-free play for every child, everywhere.</p>
           </div>
         </div>
 
-        <!-- Card 3 — What Mochi taught (original Mochi robot GIF) -->
+        <!-- Card 3 — How it's going -->
         <div class="c-card">
           <div class="c-img photo">
-            <img src="https://substackcdn.com/image/fetch/$s_!BeNZ!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F80c1469c-50d4-44b0-8cfc-577d3db12e8d_680x383.gif" alt="Mochi robot in action">
+            <img src="https://substack-post-media.s3.amazonaws.com/public/images/98d73184-f277-4c8d-bba9-5b5a9c0a3d2a_1838x942.png" alt="Mochi community love across 60+ countries">
+          </div>
+          <div class="c-body">
+            <div class="c-tag">How it's going</div>
+            <div class="c-title">Loved in 60+ countries.</div>
+            <p class="c-text">With 1000s of screen-free coding kits shipped to homes and families across Asia, Africa, America, and Europe, we work hard to earn and keep your trust.</p>
+          </div>
+        </div>
+
+        <!-- Card 4 — What we learned -->
+        <div class="c-card">
+          <div class="c-img photo">
+            <img src="https://substack-post-media.s3.amazonaws.com/public/images/bcf9271e-10b0-4817-b3e9-c7eaa972cb64_680x383.gif" alt="Mochi storybook animation">
           </div>
           <div class="c-body">
             <div class="c-tag">What we learned</div>
-            <div class="c-title">Stories are the curriculum.</div>
-            <p class="c-text">Mochi taught us that when you wrap a big idea in a great story, children absorb it without trying. Play isn't the break from learning. It <em>is</em> the learning.</p>
+            <div class="c-title">Learning made fun.</div>
+            <p class="c-text">The research is out: when kids connect with a story, learning is inevitable. Named Top Pre-College Gift Pick by Purdue Engineering, and Forbes STEM Toy of the Year.</p>
           </div>
         </div>
 
-        <!-- Card 4 — Testimonial (child using Mochi) -->
+        <!-- Card 5 — Parents said it best -->
         <div class="c-card">
           <div class="c-img photo">
-            <img src="https://substackcdn.com/image/fetch/$s_!8Kf9!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1252604f-ae3a-4559-8e97-2a46d08b0890_1504x2016.jpeg" alt="Child learning with Mochi">
+            <img src="https://substack-post-media.s3.amazonaws.com/public/images/1252604f-ae3a-4559-8e97-2a46d08b0890_1504x2016.jpeg" alt="Young girl reading with Mochi">
           </div>
           <div class="c-body">
-            <div class="c-tag">Families said it best</div>
-            <div class="c-title">The proof was in the play.</div>
-            <p class="c-quote">"Mochi inspires growing brains and curious hands. My daughter asks for it by name every single day."<cite>A Mochi parent, Ohio</cite></p>
-          </div>
-        </div>
-
-        <!-- Card 4.5 — Recognition / proof points -->
-        <div class="c-card">
-          <div class="c-img photo">
-            <img src="https://substackcdn.com/image/fetch/$s_!fAIn!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F29499f0a-4e2b-43c2-b2d8-ec5725d6a020_600x337.gif" alt="Mochi product">
-          </div>
-          <div class="c-body">
-            <div class="c-tag">Earned your trust</div>
-            <div class="c-title">The world took notice.</div>
-            <p class="c-text">#1 on Product Hunt. Forbes' Top STEM Toy of 2024. Purdue Engineering's top pre-college gift pick. When products are built with trust, care, and safety, learning is inevitable.</p>
-          </div>
-        </div>
-
-        <!-- Card 5 — Customer love (testimonials screenshot) -->
-        <div class="c-card">
-          <div class="c-img photo">
-            <img src="https://substackcdn.com/image/fetch/$s_!Qpt-!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F98d73184-f277-4c8d-bba9-5b5a9c0a3d2a_1838x942.png" alt="Mochi customer love">
-          </div>
-          <div class="c-body">
-            <div class="c-tag">60+ countries</div>
-            <div class="c-title">One mission, everywhere.</div>
-            <p class="c-text">Mochi shipped globally. Every box that arrived on a doorstep was proof: parents and educators everywhere want the same thing for their kids, and deserve real tools to get there.</p>
+            <div class="c-tag">Parents said it best</div>
+            <div class="c-title">Magic, one box at a time.</div>
+            <p class="c-text">"My daughter asks for Mochi every night. She loves the sounds, stories, and songs...and even created a Mochi bear dance in daycare!"</p>
           </div>
         </div>
 
@@ -1251,10 +1331,10 @@
 
       <div class="resource-card">
         <div class="resource-thumb" style="background: linear-gradient(135deg, #D0ECE5 0%, #9AD4C6 100%);">
-          <img src="Sample Images/allyourdocs.png" alt="Documents and assessment materials illustration">
+          <img src="Sample Images/allyourdocs.png" alt="Documents and activity materials illustration">
         </div>
         <div class="resource-body">
-          <div class="res-type">Assessment · Printable</div>
+          <div class="res-type">Activity · Printable</div>
           <div class="res-title">Play-Based Screening: Ages 3–5 Observation Guide</div>
           <div class="res-meta">Updated Mar 2026 · 8 pages</div>
           <a href="#" class="res-dl-btn">↓ Free download</a>
@@ -1316,7 +1396,7 @@
             <span class="faq-icon" aria-hidden="true">+</span>
           </button>
           <div class="faq-a-wrap">
-            <div class="faq-a">Sunbear Labs is an early childhood education platform built to help every child walk into Kindergarten ready. We bring together assessment tools, curriculum frameworks, progress reporting, and family engagement resources — all grounded in research and designed for the real-world constraints of Pre-K and Early Learning programs.</div>
+            <div class="faq-a">Sunbear Labs is an early childhood education platform built to help every child walk into kindergarten ready. We bring together activity tools, curriculum frameworks, progress reporting, and family engagement resources — all grounded in research and designed for the real-world constraints of pre-K and Early Learning programs.</div>
           </div>
         </div>
 
@@ -1326,7 +1406,7 @@
             <span class="faq-icon" aria-hidden="true">+</span>
           </button>
           <div class="faq-a-wrap">
-            <div class="faq-a">Our core tools are always free. That includes readiness assessments, family activity guides, and milestone tracking for individual children. Additional capabilities like cohort reporting, grant documentation, and advanced analytics are available for programs and networks at scale that need more.</div>
+            <div class="faq-a">Our core tools are always free. That includes readiness activity kits, family guides, and milestone tracking for individual children. Additional capabilities like cohort reporting, grant documentation, and advanced analytics are available for programs and networks at scale that need more.</div>
           </div>
         </div>
 
@@ -1346,7 +1426,7 @@
             <span class="faq-icon" aria-hidden="true">+</span>
           </button>
           <div class="faq-a-wrap">
-            <div class="faq-a">Sunbear Labs is built for three main audiences: Pre-K educators and Head Start programs looking for evidence-based tools to build Kindergarten readiness; families who want to actively support school readiness at home; and program operators managing childcare networks, cohort reporting, and grant documentation. If you work with children ages 2–6, Sunbear is built for you.</div>
+            <div class="faq-a">Sunbear Labs is built for three main audiences: pre-K educators and Head Start programs looking for evidence-based tools to build kindergarten readiness; families who want to actively support school readiness at home; and program operators managing childcare networks, cohort reporting, and grant documentation. If you work with children ages 2–6, Sunbear is built for you.</div>
           </div>
         </div>
 
@@ -1356,7 +1436,7 @@
             <span class="faq-icon" aria-hidden="true">+</span>
           </button>
           <div class="faq-a-wrap">
-            <div class="faq-a">Yes. Our assessments and curriculum frameworks are aligned to state K-entry standards and <a href="https://headstart.gov/school-readiness/article/head-start-early-learning-outcomes-framework" target="_blank" rel="noopener noreferrer" style="font-weight:700; color:#2A6B58;">Head Start Early Learning Outcomes Framework (ELOF)</a>. We regularly review and update our content to reflect the latest research in early childhood development and state-level requirements.</div>
+            <div class="faq-a">Yes. Our activity frameworks and curricula are aligned to state K-entry standards and <a href="https://headstart.gov/school-readiness/article/head-start-early-learning-outcomes-framework" target="_blank" rel="noopener noreferrer" style="font-weight:700; color:#2A6B58;">Head Start Early Learning Outcomes Framework (ELOF)</a>. We regularly review and update our content to reflect the latest research in early childhood development and state-level requirements.</div>
           </div>
         </div>
 
@@ -1376,9 +1456,11 @@
 </section>
 
 
-<!-- Floral divider -->
-<div class="floral-divider">
-  <img src="Sample Images/floralbottom.png" alt="">
+<!-- Floral divider — alive garden -->
+<div class="floral-divider" id="floralDivider">
+  <div class="floral-scale-wrap">
+    <img src="Sample Images/floralbottom.png" alt="" id="floralImg">
+  </div>
 </div>
 
 <!-- ══════════════════════════════════
@@ -1394,14 +1476,14 @@
           <img src="Sample Images/sunbear-logo-colored.svg" width="90" height="90" alt="" aria-hidden="true">
           <span class="footer-wm">Sunbear Labs</span>
         </div>
-        <p class="footer-tagline">Sunbear Labs is a Pre-K learning playground for educators, families, and program operators.</p>
+        <p class="footer-tagline">Sunbear Labs is a kindergarten readiness lab for pre-K educators, families, and program operators.</p>
       </div>
 
       <!-- Link columns -->
       <div class="footer-col">
         <div class="footer-col-title">Product</div>
         <ul>
-          <li><a href="#">Readiness Assessments</a></li>
+          <li><a href="#">Readiness Activities</a></li>
           <li><a href="#">Curriculum Frameworks</a></li>
           <li><a href="#">Progress Reporting</a></li>
           <li><a href="#">Family Tools</a></li>
@@ -1617,30 +1699,38 @@
     });
   })();
 
-  /* ── Photosynthesizing overlay demo ──
-     Triggered when "Get started" is clicked (simulating a page navigation).
-     In production: call showPhotosynth() before any page transition.
-  ── */
+  /* ── PHOTOSYNTHESIZING — cross-page transition ── */
   (function () {
     const overlay = document.getElementById('photosynth-overlay');
+    if (!overlay) return;
 
-    function showPhotosynth(durationMs) {
+    // ── On page entry: only show overlay if arriving from another Sunbear page.
+    if (sessionStorage.getItem('ps-nav')) {
+      sessionStorage.removeItem('ps-nav');
       overlay.classList.add('active');
-      setTimeout(() => overlay.classList.remove('active'), durationMs || 2200);
+      setTimeout(() => overlay.classList.remove('active'), 950);
     }
 
-    // Wire up every "Get started →" button
-    document.querySelectorAll('a[href="#"]').forEach(link => {
-      if (link.textContent.trim().startsWith('Get started')) {
-        link.addEventListener('click', e => {
-          e.preventDefault();
-          showPhotosynth(2200);
-        });
-      }
-    });
+    // ── On page exit: intercept all same-site page links.
+    function isSameSiteLink(a) {
+      const href = a.getAttribute('href');
+      if (!href || href.startsWith('#')) return false;          // same-page anchor
+      if (/^(mailto|tel|javascript):/i.test(href)) return false;
+      if (a.target === '_blank') return false;                  // new tab
+      if (/^https?:\/\//i.test(href)) return false;            // external URL
+      return true;
+    }
 
-    // Also expose globally for future use: window.showPhotosynth(ms)
-    window.showPhotosynth = showPhotosynth;
+    document.querySelectorAll('a').forEach(link => {
+      if (!isSameSiteLink(link)) return;
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        const dest = link.getAttribute('href');
+        sessionStorage.setItem('ps-nav', '1');
+        overlay.classList.add('active');
+        setTimeout(() => { window.location.href = dest; }, 560);
+      });
+    });
   })();
 
   /* ── ANIMATION 3: Feature cards slide up on scroll-enter ── */
@@ -1706,6 +1796,69 @@
         }
       }, { threshold: 0.4 });
       statsObs.observe(statsSection);
+    }
+  })();
+
+  /* ── FLORAL DIVIDER — alive garden: bloom + scroll parallax + mouse parallax ── */
+  (function () {
+    const divider = document.getElementById('floralDivider');
+    const img     = document.getElementById('floralImg');
+    if (!divider || !img) return;
+
+    // ── 1. Bloom on enter viewport ──
+    let inView = false;
+    const bloomObs = new IntersectionObserver(entries => {
+      if (entries[0].isIntersecting && !inView) {
+        inView = true;
+        // Tiny delay so the transition feels intentional, not instant
+        setTimeout(() => divider.classList.add('in-view'), 120);
+        bloomObs.disconnect();
+      }
+    }, { threshold: 0.06 });
+    bloomObs.observe(divider);
+
+    // ── 2. Scroll parallax — img translates up at ~40% of scroll speed ──
+    //    Scale wrap handles scale breathing; img handles translate only.
+    let scrollTY = 0;
+    function updateScrollParallax() {
+      if (!inView) return;
+      const rect   = divider.getBoundingClientRect();
+      const viewH  = window.innerHeight;
+      // progress: 0 = bottom of image just entered viewport; 1 = top just exited
+      const progress = (viewH - rect.top) / (viewH + rect.height);
+      const clamped  = Math.max(0, Math.min(1, progress));
+      // translate range: enters low (+18px), exits high (-18px)
+      scrollTY = (clamped - 0.5) * -36;
+      applyTransform();
+    }
+    window.addEventListener('scroll', updateScrollParallax, { passive: true });
+
+    // ── 3. Mouse parallax — smooth lerp toward cursor offset ──
+    let mouseTX = 0, mouseTY = 0;
+    let targetTX = 0, targetTY = 0;
+    let raf = null;
+
+    window.addEventListener('mousemove', e => {
+      if (!inView) return;
+      // Cursor offset from center, mapped to ±14px X, ±7px Y
+      targetTX = (e.clientX / window.innerWidth  - 0.5) * -28;
+      targetTY = (e.clientY / window.innerHeight - 0.5) * -14;
+      if (!raf) raf = requestAnimationFrame(lerpMouse);
+    });
+
+    function lerpMouse() {
+      mouseTX += (targetTX - mouseTX) * 0.07;
+      mouseTY += (targetTY - mouseTY) * 0.07;
+      applyTransform();
+      const stillMoving = Math.abs(targetTX - mouseTX) > 0.04 ||
+                          Math.abs(targetTY - mouseTY) > 0.04;
+      raf = stillMoving ? requestAnimationFrame(lerpMouse) : null;
+    }
+
+    function applyTransform() {
+      const tx = (mouseTX + 0).toFixed(2);
+      const ty = (mouseTY + scrollTY).toFixed(2);
+      img.style.transform = `translate(${tx}px, ${ty}px)`;
     }
   })();
 </script>
