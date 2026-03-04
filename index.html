@@ -225,20 +225,25 @@
       padding: 64px 0;
     }
     .audience-grid {
-      display: grid; grid-template-columns: repeat(3,1fr); gap: 0;
+      display: grid; grid-template-columns: repeat(3,1fr); gap: 0; column-gap: 96px;
     }
     .audience-card {
       background: transparent;
       border: none;
-      border-right: 1px solid var(--border);
-      padding: 0 48px 0 0;
-      margin-right: 48px;
+      padding: 0;
+      margin-right: 0;
+      position: relative;
       display: flex; flex-direction: column; align-items: flex-start;
       transition: opacity 0.5s ease, transform 0.5s ease;
       opacity: 0;
       transform: translateY(20px);
     }
-    .audience-card:last-child { border-right: none; margin-right: 0; }
+    /* Divider rendered in the gap so all 3 cards stay equal width */
+    .audience-card:not(:last-child)::after {
+      content: ''; position: absolute; right: -48px; top: 0; bottom: 0;
+      width: 1px; background: var(--border);
+    }
+    .audience-card:last-child { margin-right: 0; }
     .aud-body { width: 100%; }
     /* Entrance reveal */
     .audience-card.anim-in { opacity: 1; transform: translateY(0); }
@@ -813,6 +818,7 @@
       .features-grid   { grid-template-columns: 1fr; }
       .audience-grid   { grid-template-columns: 1fr; gap: 0; }
       .audience-card   { border-right: none; border-bottom: 1px solid var(--border); padding: 0 0 32px; margin-right: 0; margin-bottom: 32px; }
+      .audience-card::after { display: none; }
       .audience-card:last-child { border-bottom: none; margin-bottom: 0; }
       .resources-grid  { grid-template-columns: 1fr 1fr; }
       .stats-grid      { grid-template-columns: 1fr 1fr; gap: 0; }
