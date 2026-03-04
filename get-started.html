@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Get Started — Sunbear Labs</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --yellow:      #FFCA00;
+      --yellow-lt:   #FFF4D9;
+      --teal:        #D0ECE5;
+      --teal-dark:   #2A6B58;
+      --lavender:    #EDE8F8;
+      --bg:          #F5F2EC;
+      --card:        #FFFFFF;
+      --border:      #E5E2DB;
+      --text-1:      #101828;
+      --text-2:      #344054;
+      --text-3:      #98A0B0;
+      --pill:        999px;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); font-family: 'Inter', sans-serif; color: var(--text-1); line-height: 1.6; min-height: 100vh; }
+    a { text-decoration: none; }
+    button { font-family: inherit; }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(255,255,255,.92);
+      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      max-width: 1100px; margin: 0 auto; padding: 0 32px;
+      display: flex; align-items: center; justify-content: space-between; height: 64px;
+    }
+    .nav-logo { display: flex; align-items: center; gap: 10px; }
+    .logo-wm { font-family: 'Nunito', sans-serif; font-size: 17px; font-weight: 800; letter-spacing: -.01em; color: var(--text-1); }
+    .nav-login {
+      font-size: 13.5px; font-weight: 500; color: var(--text-2);
+      padding: 7px 16px; border-radius: var(--pill); border: 1px solid var(--border);
+      transition: border-color .15s, color .15s;
+    }
+    .nav-login:hover { border-color: var(--text-2); color: var(--text-1); }
+
+    /* ── LAYOUT ── */
+    main {
+      display: flex; justify-content: center; align-items: flex-start;
+      padding: 48px 20px 80px; min-height: calc(100vh - 64px);
+      position: relative; z-index: 1;
+    }
+    .card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 20px; width: 100%; max-width: 560px;
+      padding: 40px 44px 48px;
+      box-shadow: 0 4px 24px rgba(16,24,40,.07);
+    }
+
+    /* ── PROGRESS ── */
+    .progress-track {
+      width: 100%; height: 3px; background: var(--border);
+      border-radius: 2px; margin-bottom: 36px; overflow: hidden;
+    }
+    .progress-fill {
+      height: 100%; background: var(--teal-dark);
+      border-radius: 2px; width: 16%;
+      transition: width .5s cubic-bezier(.4,0,.2,1);
+    }
+
+    /* ── STEP TRANSITIONS ── */
+    .step { display: none; }
+    .step.active { display: block; animation: fadeUp .28s ease both; }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(10px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── SHARED TEXT ── */
+    .step-heading {
+      font-family: 'Nunito', sans-serif; font-size: clamp(26px, 4vw, 32px);
+      font-weight: 800; letter-spacing: -.02em; line-height: 1.15;
+      color: var(--text-1); margin-bottom: 6px;
+    }
+    .step-sub { font-size: 14.5px; color: var(--text-3); margin-bottom: 28px; }
+
+    .back-btn {
+      display: inline-flex; align-items: center; gap: 4px;
+      font-size: 13px; font-weight: 500; color: var(--text-3);
+      background: none; border: none; cursor: pointer; padding: 0; margin-bottom: 24px;
+      transition: color .15s;
+    }
+    .back-btn:hover { color: var(--text-1); }
+
+    /* ── STEP 1: PERSONA GRID ── */
+    .persona-grid { display: flex; flex-direction: column; gap: 10px; }
+
+    .persona-card {
+      background: var(--card); border: 1.5px solid var(--border);
+      border-radius: 16px; overflow: hidden; cursor: pointer;
+      text-align: left; width: 100%; position: relative;
+      display: flex; align-items: center; flex-direction: row;
+      transition: border-color .2s, transform .18s;
+    }
+    .persona-card:hover { border-color: var(--yellow); transform: translateY(-2px); }
+    .persona-card.selected { border-color: var(--teal-dark); }
+
+    /* Icon area: neutral until selected, then branded color appears */
+    .pc-visual {
+      width: 80px; flex-shrink: 0; align-self: stretch;
+      display: flex; align-items: center; justify-content: center;
+      background: #F9F8F5; transition: background .25s;
+    }
+    .persona-card.selected[data-persona="educator"] .pc-visual { background: var(--teal); }
+    .persona-card.selected[data-persona="family"]   .pc-visual { background: var(--yellow-lt); }
+    .persona-card.selected[data-persona="operator"] .pc-visual { background: var(--lavender); }
+
+    .pc-img { width: 48px; height: 48px; object-fit: contain; transition: transform .22s; }
+    .persona-card:hover .pc-img { transform: scale(1.08); }
+    .persona-card.selected .pc-img { transform: scale(1.04); }
+
+    .pc-body { padding: 14px 16px; flex: 1; }
+    .pc-name { font-family: 'Nunito', sans-serif; font-size: 16px; font-weight: 800; color: var(--text-1); margin-bottom: 2px; white-space: nowrap; }
+    .pc-desc { font-size: 12px; color: var(--text-3); line-height: 1.4; }
+
+    .pc-check {
+      position: absolute; top: 50%; right: 14px;
+      width: 20px; height: 20px; border-radius: 50%;
+      background: var(--teal-dark); color: #fff;
+      font-size: 10px; display: flex; align-items: center; justify-content: center;
+      opacity: 0; transform: translateY(-50%) scale(0);
+      transition: opacity .18s, transform .25s cubic-bezier(.34,1.56,.64,1);
+    }
+    .persona-card.selected .pc-check { opacity: 1; transform: translateY(-50%) scale(1); }
+
+    /* ── STEP 2: MASCOT + OPTIONS ── */
+    .mascot-row {
+      display: flex; align-items: flex-start; gap: 12px; margin-bottom: 28px;
+    }
+    .mascot-img { width: 40px; height: 40px; flex-shrink: 0; border-radius: 50%; }
+    .mascot-bubble {
+      background: var(--bg); border: 1px solid var(--border);
+      border-radius: 3px 14px 14px 14px;
+      padding: 11px 15px; flex: 1;
+    }
+    .mascot-bubble-text {
+      font-family: 'Nunito', sans-serif; font-size: 17px; font-weight: 800;
+      color: var(--text-1); line-height: 1.25;
+    }
+
+    .q-block { margin-bottom: 16px; }
+    .q-label {
+      font-size: 11px; font-weight: 600; letter-spacing: .07em;
+      text-transform: uppercase; color: var(--text-3); margin-bottom: 8px;
+    }
+    .opt {
+      display: flex; align-items: center; justify-content: space-between;
+      width: 100%; background: var(--card); border: 1.5px solid var(--border);
+      border-radius: 10px; padding: 12px 15px; cursor: pointer; margin-bottom: 6px;
+      font-size: 14px; font-weight: 500; color: var(--text-2); text-align: left;
+      transition: border-color .15s, background .15s, color .15s;
+    }
+    .opt:last-child { margin-bottom: 0; }
+    .opt:hover { border-color: #C0BDB5; color: var(--text-1); }
+    .opt.selected {
+      border-color: var(--teal-dark); background: #F4FBF8; color: var(--text-1);
+    }
+    .opt-tick {
+      width: 18px; height: 18px; border-radius: 50%;
+      background: var(--teal-dark); color: #fff;
+      font-size: 9px; display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; opacity: 0; transform: scale(0);
+      transition: opacity .15s, transform .22s cubic-bezier(.34,1.56,.64,1);
+    }
+    .opt.selected .opt-tick { opacity: 1; transform: scale(1); }
+
+    /* Context input */
+    .ctx-group { margin: 18px 0 24px; }
+    .ctx-label {
+      font-size: 13px; font-weight: 500; color: var(--text-2);
+      display: flex; align-items: center; gap: 8px; margin-bottom: 8px;
+    }
+    .opt-badge {
+      font-size: 10px; font-weight: 600; letter-spacing: .05em; text-transform: uppercase;
+      color: var(--text-3); background: var(--bg); border: 1px solid var(--border);
+      border-radius: var(--pill); padding: 1px 8px;
+    }
+    .ctx-input {
+      width: 100%; background: var(--card); border: 1.5px solid var(--border);
+      border-radius: 8px; padding: 10px 14px;
+      font-family: 'Inter', sans-serif; font-size: 14px; color: var(--text-1); outline: none;
+      transition: border-color .18s, box-shadow .18s;
+    }
+    .ctx-input::placeholder { color: var(--text-3); }
+    .ctx-input:focus { border-color: var(--teal-dark); box-shadow: 0 0 0 3px rgba(42,107,88,.1); }
+
+    /* ── BUTTONS ── */
+    .btn-continue {
+      width: 100%; padding: 13px; border-radius: var(--pill); border: none; cursor: pointer;
+      background: var(--teal-dark); color: #fff;
+      font-family: 'Inter', sans-serif; font-size: 15px; font-weight: 600;
+      transition: opacity .18s, transform .15s;
+    }
+    .btn-continue:not(:disabled):hover { opacity: .88; transform: translateY(-1px); }
+    .btn-continue:disabled { opacity: .25; cursor: not-allowed; }
+
+    /* ── STEP 3: ACCOUNT ── */
+    .step3-img {
+      width: 100%; height: 150px; object-fit: cover; display: block;
+      border-radius: 10px; border: 1px solid var(--border);
+      margin-bottom: 22px; opacity: .92;
+    }
+    .q-reveal { animation: fadeUp .3s ease both; }
+
+    /* ── STEP 4: CONFETTI ── */
+    .success-wrap { position: relative; }
+    .cp {
+      position: absolute; top: 40%; left: 50%;
+      width: var(--s); height: var(--s); border-radius: 2px;
+      background: var(--c); pointer-events: none; z-index: 10;
+      animation: cp-fly 1s var(--d) cubic-bezier(.15,.8,.3,1) both;
+    }
+    @keyframes cp-fly {
+      from { opacity: 1; transform: translate(-50%,-50%) translate(0,0) scale(1); }
+      to   { opacity: 0; transform: translate(-50%,-50%) translate(var(--x),var(--y)) scale(.4); }
+    }
+    .fields { display: flex; flex-direction: column; gap: 10px; margin-bottom: 4px; }
+    .field-wrap { display: flex; flex-direction: column; gap: 4px; }
+    .acct-input {
+      width: 100%; background: var(--card); border: 1.5px solid var(--border);
+      border-radius: 8px; padding: 12px 14px;
+      font-family: 'Inter', sans-serif; font-size: 15px; color: var(--text-1); outline: none;
+      transition: border-color .18s, box-shadow .18s;
+    }
+    .acct-input::placeholder { color: var(--text-3); }
+    .acct-input:focus { border-color: var(--teal-dark); box-shadow: 0 0 0 3px rgba(42,107,88,.1); }
+    .acct-input.error { border-color: #E34935; }
+    .field-err { font-size: 12px; color: #E34935; display: none; }
+
+    .btn-submit {
+      width: 100%; margin-top: 10px; padding: 13px; border-radius: var(--pill); border: none; cursor: pointer;
+      background: var(--yellow); color: var(--text-1);
+      font-family: 'Inter', sans-serif; font-size: 15px; font-weight: 700;
+      box-shadow: 0 2px 12px rgba(255,202,0,.3);
+      transition: opacity .18s, transform .15s;
+    }
+    .btn-submit:hover { opacity: .9; transform: translateY(-1px); }
+
+    .log-in-row { text-align: center; margin-top: 20px; font-size: 13px; color: var(--text-3); }
+    .log-in-row a { color: var(--teal-dark); font-weight: 600; }
+
+    /* ── STEP 4: SUCCESS ── */
+    .success-wrap {
+      display: flex; flex-direction: column; align-items: center;
+      text-align: center; gap: 16px; padding: 8px 0;
+    }
+    .success-img {
+      width: 120px; height: 120px; object-fit: contain;
+      animation: successIn .5s cubic-bezier(.34,1.56,.64,1) both;
+    }
+    @keyframes successIn {
+      from { opacity: 0; transform: scale(.7); }
+      to   { opacity: 1; transform: scale(1); }
+    }
+    .success-name { color: var(--teal-dark); }
+    .success-sub { font-size: 14.5px; color: var(--text-2); max-width: 360px; }
+
+    .preload-label {
+      font-size: 11px; font-weight: 600; letter-spacing: .07em;
+      text-transform: uppercase; color: var(--text-3);
+    }
+    .preload-tags { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
+    .rtag {
+      font-size: 13px; font-weight: 500; color: var(--text-1);
+      background: var(--bg); border: 1px solid var(--border);
+      border-radius: var(--pill); padding: 6px 14px;
+      animation: tagIn .35s cubic-bezier(.34,1.56,.64,1) both;
+    }
+    .rtag:nth-child(1) { animation-delay: .08s; }
+    .rtag:nth-child(2) { animation-delay: .16s; }
+    .rtag:nth-child(3) { animation-delay: .24s; }
+    @keyframes tagIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .success-note { font-size: 13px; color: var(--text-3); }
+    .btn-workspace {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: var(--teal-dark); color: #fff;
+      font-size: 14.5px; font-weight: 600; padding: 13px 30px; border-radius: var(--pill);
+      transition: opacity .18s, transform .15s;
+    }
+    .btn-workspace:hover { opacity: .88; transform: translateY(-1px); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 540px) {
+      .card { padding: 28px 20px 36px; border-radius: 16px; }
+      main { padding: 20px 12px 60px; }
+    }
+
+    /* ── FLORAL BACKGROUND ── */
+    .floral-bg {
+      position: fixed; bottom: 0; left: 0; right: 0; z-index: 0;
+      width: 100%; pointer-events: none; opacity: 0.55;
+      user-select: none;
+    }
+
+    /* ── PHOTOSYNTHESIZING overlay ── */
+    .ps-overlay {
+      position: fixed; inset: 0; z-index: 9999;
+      background: rgba(245,242,236,.97); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; pointer-events: none; transition: opacity .3s ease;
+    }
+    .ps-overlay.active { opacity: 1; pointer-events: all; }
+    .ps-inner { display: flex; flex-direction: column; align-items: center; gap: 20px; }
+    .ps-text { font-family: 'Nunito', sans-serif; font-size: 18px; font-weight: 700; color: var(--teal-dark); }
+    .ps-stage { position: relative; width: 260px; height: 260px; display: flex; align-items: center; justify-content: center; }
+    .ps-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; border-radius: 16px; animation: ps-breathe 3s ease-in-out infinite; }
+    @keyframes ps-breathe { 0%,100%{transform:scale(1)} 50%{transform:scale(1.04)} }
+    .ps-dot { animation: ps-dot-b 1.5s ease-in-out infinite; display: inline-block; }
+    .ps-dot:nth-child(2){animation-delay:.2s} .ps-dot:nth-child(3){animation-delay:.4s}
+    @keyframes ps-dot-b { 0%,60%,100%{opacity:0;transform:translateY(0)} 30%{opacity:1;transform:translateY(-4px)} }
+  </style>
+</head>
+<body>
+
+<!-- Floral background decoration -->
+<img src="Sample Images/floralbottom.png" class="floral-bg" alt="" aria-hidden="true">
+
+<!-- Photosynthesizing overlay -->
+<div id="psOverlay" class="ps-overlay" role="status" aria-label="Loading">
+  <div class="ps-inner">
+    <div class="ps-stage"><img src="Sample Images/sparkles.svg" class="ps-img" alt=""></div>
+    <div class="ps-text">Photosynthesizing<span class="ps-dot">.</span><span class="ps-dot">.</span><span class="ps-dot">.</span></div>
+  </div>
+</div>
+
+<!-- Nav -->
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo" aria-label="Sunbear Labs">
+      <img src="Sample Images/sunbear-logo-colored.svg" width="40" height="40" alt="" aria-hidden="true">
+      <span class="logo-wm">Sunbear Labs</span>
+    </a>
+    <a href="#" class="nav-login">Log in</a>
+  </div>
+</nav>
+
+<!-- Onboarding -->
+<main>
+  <div class="card">
+
+    <div class="progress-track" aria-hidden="true">
+      <div class="progress-fill" id="pFill"></div>
+    </div>
+
+
+    <!-- Step 1 -->
+    <section class="step active" id="step1">
+      <h1 class="step-heading">I am...</h1>
+
+      <div class="persona-grid">
+        <button class="persona-card" data-persona="educator" aria-pressed="false">
+          <div class="pc-visual">
+            <img src="Sample Images/educator.png" class="pc-img" alt="">
+          </div>
+          <div class="pc-body">
+            <div class="pc-name">An Educator</div>
+            <div class="pc-desc">Pre-K teacher, Head Start staff, or early learning specialist</div>
+          </div>
+          <span class="pc-check" aria-hidden="true">&#10003;</span>
+        </button>
+
+        <button class="persona-card" data-persona="family" aria-pressed="false">
+          <div class="pc-visual">
+            <img src="Sample Images/family.png" class="pc-img" alt="">
+          </div>
+          <div class="pc-body">
+            <div class="pc-name">A Parent</div>
+            <div class="pc-desc">Family member or caregiver supporting a child at home</div>
+          </div>
+          <span class="pc-check" aria-hidden="true">&#10003;</span>
+        </button>
+
+        <button class="persona-card" data-persona="operator" aria-pressed="false">
+          <div class="pc-visual">
+            <img src="Sample Images/operator.png" class="pc-img" alt="">
+          </div>
+          <div class="pc-body">
+            <div class="pc-name">A Program Operator</div>
+            <div class="pc-desc">Childcare network, district, or program administrator</div>
+          </div>
+          <span class="pc-check" aria-hidden="true">&#10003;</span>
+        </button>
+      </div>
+    </section>
+
+
+    <!-- Step 2 -->
+    <section class="step" id="step2">
+      <button class="back-btn" id="back1" type="button">&#8592; Back</button>
+
+      <div class="mascot-row">
+        <img src="Sample Images/sunbear-logo-colored.svg" class="mascot-img" alt="">
+        <div class="mascot-bubble">
+          <div class="mascot-bubble-text" id="step2Heading">Tell us about your classroom.</div>
+        </div>
+      </div>
+
+      <div id="qContainer"></div>
+
+      <div id="step2Bottom" style="display:none">
+        <div class="ctx-group">
+          <label class="ctx-label" for="ctxInput">
+            Anything else you'd like us to know?
+            <span class="opt-badge">optional</span>
+          </label>
+          <input type="text" class="ctx-input" id="ctxInput"
+            placeholder="e.g. I work with multilingual families in a Title I school">
+        </div>
+        <button class="btn-continue" id="continueBtn" disabled type="button">Continue</button>
+      </div>
+    </section>
+
+
+    <!-- Step 3 -->
+    <section class="step" id="step3">
+      <button class="back-btn" id="back2" type="button">&#8592; Back</button>
+      <img src="Sample Images/newkeys.png" class="step3-img" alt="">
+      <h1 class="step-heading">One last step.</h1>
+      <p class="step-sub">Free forever. No catch.</p>
+
+      <form id="acctForm" novalidate>
+        <div class="fields">
+          <div class="field-wrap">
+            <input class="acct-input" type="text" id="firstName" placeholder="First name" autocomplete="given-name" required>
+            <div class="field-err" id="nameErr">Please enter your first name.</div>
+          </div>
+          <div class="field-wrap">
+            <input class="acct-input" type="email" id="emailAddr" placeholder="Email address" autocomplete="email" required>
+            <div class="field-err" id="emailErr">Please enter a valid email.</div>
+          </div>
+          <div class="field-wrap">
+            <input class="acct-input" type="password" id="password" placeholder="Password (min. 8 characters)" autocomplete="new-password" required>
+            <div class="field-err" id="passErr">Password must be at least 8 characters.</div>
+          </div>
+        </div>
+        <button type="submit" class="btn-submit">Create my account</button>
+      </form>
+
+      <p class="log-in-row">Already have an account? <a href="#">Log in</a></p>
+    </section>
+
+
+    <!-- Step 4: Success -->
+    <section class="step" id="step4">
+      <div class="success-wrap">
+        <img src="Sample Images/sparkles.svg" class="success-img" alt="">
+        <h1 class="step-heading">Welcome, <span class="success-name" id="successName">there</span>.</h1>
+        <p class="success-sub">Your workspace is ready. Here's what we've set up based on your answers.</p>
+        <div class="preload-label">Pre-loaded for you</div>
+        <div class="preload-tags" id="preloadTags"></div>
+        <p class="success-note">Check your inbox for a welcome email from Sunbear Labs.</p>
+        <a href="#" class="btn-workspace">Go to my workspace &#8594;</a>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+
+<script>
+(function () {
+
+  const Q = {
+    educator: {
+      heading: 'Tell us about your classroom.',
+      q1: { label: 'How many children are in your class?',
+            opts: ['Fewer than 10', '10–20 children', '21–30 children', 'More than 30'] },
+      q2: { label: 'What is your biggest priority right now?',
+            opts: ['Literacy and language', 'Math and STEM', 'Social-emotional skills', 'Kindergarten transition'] }
+    },
+    family: {
+      heading: 'Tell us about your child.',
+      q1: { label: 'How old is your child?',
+            opts: ['2–3 years old', '3–4 years old', '4–5 years old', '5–6 years old'] },
+      q2: { label: 'What are you most focused on?',
+            opts: ['Early reading skills', 'Social-emotional growth', 'Preparing for kindergarten', 'Fun learning at home'] }
+    },
+    operator: {
+      heading: 'Tell us about your program.',
+      q1: { label: 'How many children does your program serve?',
+            opts: ['Fewer than 50', '50–200 children', '201–500 children', 'More than 500'] },
+      q2: { label: 'What is your top priority?',
+            opts: ['Curriculum alignment', 'Progress and reporting', 'Family engagement', 'Grant documentation'] }
+    }
+  };
+
+  const RESOURCES = {
+    educator: {
+      'Literacy and language':      ['Sunbear Stories', 'Read-Aloud Guide', 'Phonics Activity Pack'],
+      'Math and STEM':               ['Sunbear Explorer', 'Math Readiness Kit', 'STEM Discovery Pack'],
+      'Social-emotional skills':     ['Sunbear Kids Club', 'SEL Toolkit', 'Feelings Activity Cards'],
+      'Kindergarten transition':     ['Starter School', 'K-Readiness Checklist', '30-Day Transition Plan']
+    },
+    family: {
+      'Early reading skills':        ['Sunbear Stories', 'Family Phonics Guide', 'Read-Aloud Favorites'],
+      'Social-emotional growth':     ['Sunbear Kids Club', 'Feelings at Home', 'SEL Activity Cards'],
+      'Preparing for kindergarten':  ['Family Starter Pack', 'K-Readiness Checklist', '30-Day Prep Guide'],
+      'Fun learning at home':        ['Sunbear Explorer', 'At-Home Activity Pack', 'Sunbear Stories']
+    },
+    operator: {
+      'Curriculum alignment':        ['Starter School Framework', 'K-Standards Alignment Map', '38-State Standards Guide'],
+      'Progress and reporting':      ['Progress Reporting Templates', 'Cohort Tracking Sheets', 'Outcome Metrics Guide'],
+      'Family engagement':           ['Family Engagement Toolkit', 'Communication Templates', 'Family Activity Packs'],
+      'Grant documentation':         ['Grant Documentation Kit', 'Outcome Data Templates', 'Program Impact Guide']
+    }
+  };
+
+  const DEFAULT_RESOURCES = ['Sunbear Stories', 'Activity Pack', 'Getting Started Guide'];
+
+  let persona = null;
+  let answers = { q1: null, q2: null };
+
+  const pFill = document.getElementById('pFill');
+  const PROGRESS = { 1: '16%', 2: '50%', 3: '83%', 4: '100%' };
+
+  function showStep(n) {
+    document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
+    document.getElementById('step' + n).classList.add('active');
+    pFill.style.width = PROGRESS[n] || '100%';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  /* Step 1 */
+  document.querySelectorAll('.persona-card').forEach(card => {
+    card.addEventListener('click', () => {
+      document.querySelectorAll('.persona-card').forEach(c => {
+        c.classList.remove('selected');
+        c.setAttribute('aria-pressed', 'false');
+      });
+      card.classList.add('selected');
+      card.setAttribute('aria-pressed', 'true');
+      persona = card.dataset.persona;
+      setTimeout(() => { buildQ(persona); showStep(2); }, 240);
+    });
+  });
+
+  /* Step 2 */
+  function makeQBlock(key, qData) {
+    return `<div class="q-block">
+      <div class="q-label">${qData.label}</div>
+      ${qData.opts.map(o => `
+        <button class="opt" data-q="${key}" data-val="${o}" type="button">
+          <span>${o}</span>
+          <span class="opt-tick" aria-hidden="true">&#10003;</span>
+        </button>
+      `).join('')}
+    </div>`;
+  }
+
+  function attachOpts(container, qKey, onSelect) {
+    container.querySelectorAll(`.opt[data-q="${qKey}"]`).forEach(btn => {
+      btn.addEventListener('click', () => {
+        container.querySelectorAll(`.opt[data-q="${qKey}"]`).forEach(b => b.classList.remove('selected'));
+        btn.classList.add('selected');
+        onSelect(btn.dataset.val);
+      });
+    });
+  }
+
+  function revealEl(el) {
+    el.style.display = 'block';
+    void el.offsetWidth; // force reflow so animation fires
+    el.classList.add('q-reveal');
+  }
+
+  function buildQ(p) {
+    const data = Q[p];
+    answers = { q1: null, q2: null };
+    document.getElementById('step2Heading').textContent = data.heading;
+    document.getElementById('continueBtn').disabled = true;
+
+    const container = document.getElementById('qContainer');
+    const step2Bottom = document.getElementById('step2Bottom');
+    step2Bottom.style.display = 'none';
+    step2Bottom.classList.remove('q-reveal');
+
+    container.innerHTML = makeQBlock('q1', data.q1);
+
+    attachOpts(container, 'q1', val => {
+      answers.q1 = val;
+      if (!document.getElementById('q2Block')) {
+        const q2 = document.createElement('div');
+        q2.innerHTML = makeQBlock('q2', data.q2);
+        const block = q2.firstElementChild;
+        block.id = 'q2Block';
+        container.appendChild(block);
+        void block.offsetWidth;
+        block.classList.add('q-reveal');
+        attachOpts(container, 'q2', val2 => {
+          answers.q2 = val2;
+          revealEl(step2Bottom);
+          document.getElementById('continueBtn').disabled = false;
+        });
+      }
+    });
+  }
+
+  document.getElementById('continueBtn').addEventListener('click', () => showStep(3));
+  document.getElementById('back1').addEventListener('click', () => showStep(1));
+  document.getElementById('back2').addEventListener('click', () => showStep(2));
+
+  /* Step 3 */
+  document.getElementById('acctForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    let ok = true;
+    const fn = document.getElementById('firstName');
+    const em = document.getElementById('emailAddr');
+    const pw = document.getElementById('password');
+
+    [fn, em, pw].forEach(f => f.classList.remove('error'));
+    document.querySelectorAll('.field-err').forEach(el => el.style.display = 'none');
+
+    if (!fn.value.trim()) {
+      fn.classList.add('error'); document.getElementById('nameErr').style.display = 'block'; ok = false;
+    }
+    if (!em.value.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em.value)) {
+      em.classList.add('error'); document.getElementById('emailErr').style.display = 'block'; ok = false;
+    }
+    if (pw.value.length < 8) {
+      pw.classList.add('error'); document.getElementById('passErr').style.display = 'block'; ok = false;
+    }
+
+    if (ok) {
+      document.getElementById('successName').textContent = fn.value.trim().split(' ')[0];
+      const resources = (RESOURCES[persona] && answers.q2 && RESOURCES[persona][answers.q2])
+        ? RESOURCES[persona][answers.q2]
+        : DEFAULT_RESOURCES;
+      document.getElementById('preloadTags').innerHTML = resources.map(r =>
+        `<span class="rtag">${r}</span>`
+      ).join('');
+
+      const ov = document.getElementById('psOverlay');
+      ov.classList.add('active');
+      setTimeout(() => {
+        ov.classList.remove('active');
+        showStep(4);
+        launchConfetti();
+      }, 900);
+    }
+  });
+
+  function launchConfetti() {
+    const colors = ['#FFCA00', '#2A6B58', '#D0ECE5', '#EDE8F8', '#FFF4D9', '#CC9900'];
+    const wrap = document.querySelector('#step4 .success-wrap');
+    wrap.querySelectorAll('.cp').forEach(p => p.remove());
+    const count = 30;
+    for (let i = 0; i < count; i++) {
+      const p = document.createElement('span');
+      p.className = 'cp';
+      const angle = (i / count) * 360 + (Math.random() * 20 - 10);
+      const dist = 70 + Math.random() * 110;
+      const x = Math.cos(angle * Math.PI / 180) * dist;
+      const y = Math.sin(angle * Math.PI / 180) * dist;
+      p.style.setProperty('--x', x.toFixed(1) + 'px');
+      p.style.setProperty('--y', y.toFixed(1) + 'px');
+      p.style.setProperty('--c', colors[Math.floor(Math.random() * colors.length)]);
+      p.style.setProperty('--s', (Math.random() * 7 + 4) + 'px');
+      p.style.setProperty('--d', (Math.random() * 0.35) + 's');
+      wrap.appendChild(p);
+      setTimeout(() => p.remove(), 1800);
+    }
+  }
+
+  /* Photosynthesizing arrival */
+  const ov = document.getElementById('psOverlay');
+  if (ov && sessionStorage.getItem('ps-nav')) {
+    sessionStorage.removeItem('ps-nav');
+    ov.classList.add('active');
+    setTimeout(() => ov.classList.remove('active'), 950);
+  }
+
+})();
+</script>
+
+</body>
+</html>
