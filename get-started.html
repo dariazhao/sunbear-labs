@@ -317,10 +317,11 @@
       opacity: 0; pointer-events: none; transition: opacity .3s ease;
     }
     .ps-overlay.active { opacity: 1; pointer-events: all; }
-    .ps-inner { display: flex; flex-direction: column; align-items: center; gap: 20px; }
+    .ps-inner { display: flex; flex-direction: column; align-items: center; gap: 20px; text-align: center; }
     .ps-text { font-family: 'Nunito', sans-serif; font-size: 18px; font-weight: 700; color: var(--teal-dark); }
     .ps-stage { position: relative; width: 260px; height: 260px; display: flex; align-items: center; justify-content: center; }
     .ps-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; border-radius: 16px; animation: ps-breathe 3s ease-in-out infinite; }
+    .ps-img.contain { object-fit: contain; }
     @keyframes ps-breathe { 0%,100%{transform:scale(1)} 50%{transform:scale(1.04)} }
     .ps-dot { animation: ps-dot-b 1.5s ease-in-out infinite; display: inline-block; }
     .ps-dot:nth-child(2){animation-delay:.2s} .ps-dot:nth-child(3){animation-delay:.4s}
@@ -332,11 +333,19 @@
 <!-- Floral background decoration -->
 <img src="Sample Images/floralbottom.png" class="floral-bg" alt="" aria-hidden="true">
 
-<!-- Photosynthesizing overlay -->
+<!-- Photosynthesizing overlay (arrival from homepage) -->
 <div id="psOverlay" class="ps-overlay" role="status" aria-label="Loading">
   <div class="ps-inner">
     <div class="ps-stage"><img src="Sample Images/sparkles.svg" class="ps-img" alt=""></div>
     <div class="ps-text">Photosynthesizing<span class="ps-dot">.</span><span class="ps-dot">.</span><span class="ps-dot">.</span></div>
+  </div>
+</div>
+
+<!-- Watering overlay (step 3 → success transition) -->
+<div id="waterOverlay" class="ps-overlay" role="status" aria-label="Loading">
+  <div class="ps-inner">
+    <div class="ps-stage"><img src="Sample Images/fliers.svg" class="ps-img contain" alt=""></div>
+    <div class="ps-text">Watering<span class="ps-dot">.</span><span class="ps-dot">.</span><span class="ps-dot">.</span></div>
   </div>
 </div>
 
@@ -646,7 +655,7 @@
         `<span class="rtag">${r}</span>`
       ).join('');
 
-      const ov = document.getElementById('psOverlay');
+      const ov = document.getElementById('waterOverlay');
       ov.classList.add('active');
       setTimeout(() => {
         ov.classList.remove('active');
