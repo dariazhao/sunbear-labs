@@ -1727,8 +1727,7 @@
         e.preventDefault();
         const dest = link.getAttribute('href');
         sessionStorage.setItem('ps-nav', '1');
-        overlay.classList.add('active');
-        setTimeout(() => { window.location.href = dest; }, 560);
+        window.location.href = dest;
       });
     });
   })();
