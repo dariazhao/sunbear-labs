@@ -210,9 +210,13 @@
 
     /* ── STEP 3: ACCOUNT ── */
     .step3-img {
-      width: 100%; height: 150px; object-fit: cover; display: block;
-      border-radius: 10px; border: 1px solid var(--border);
-      margin-bottom: 22px; opacity: .92;
+      display: block; width: 140px; height: 140px; object-fit: contain;
+      margin: 0 auto 20px;
+      animation: keyFloat 3.5s ease-in-out infinite;
+    }
+    @keyframes keyFloat {
+      0%, 100% { transform: translateY(0); }
+      50%       { transform: translateY(-12px); }
     }
     .q-reveal { animation: fadeUp .3s ease both; }
 
@@ -259,7 +263,7 @@
       text-align: center; gap: 16px; padding: 8px 0;
     }
     .success-img {
-      width: 120px; height: 120px; object-fit: contain;
+      width: 200px; height: 200px; object-fit: contain;
       animation: successIn .5s cubic-bezier(.34,1.56,.64,1) both;
     }
     @keyframes successIn {
@@ -661,7 +665,7 @@
         ov.classList.remove('active');
         showStep(4);
         launchConfetti();
-      }, 2250);
+      }, 1500);
     }
   });
 
@@ -692,7 +696,7 @@
   if (ov && sessionStorage.getItem('ps-nav')) {
     sessionStorage.removeItem('ps-nav');
     ov.classList.add('active');
-    setTimeout(() => ov.classList.remove('active'), 2375);
+    setTimeout(() => ov.classList.remove('active'), 1500);
   }
 
 })();
