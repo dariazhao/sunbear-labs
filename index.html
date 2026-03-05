@@ -550,7 +550,10 @@
 
     /* Title: slide-right + teal */
     .aud-title { transition: transform 0.25s ease, color 0.25s ease; }
-    .audience-card:hover .aud-title { transform: translateX(6px); color: var(--teal-dark); }
+    .audience-card:hover .aud-title { transform: translateX(6px); }
+    .audience-card:nth-child(1):hover .aud-title { color: var(--teal-dark); }
+    .audience-card:nth-child(2):hover .aud-title { color: var(--yellow-deep); }
+    .audience-card:nth-child(3):hover .aud-title { color: #9A6BA7; }
 
     /* Description: sharpen up */
     .aud-desc { transition: color 0.25s ease; }
@@ -635,7 +638,7 @@
     }
     /* Sparkles + bear stage */
     .ps-stage {
-      position: relative; width: 320px; height: 320px;
+      position: relative; width: 272px; height: 272px;
       display: flex; align-items: center; justify-content: center;
     }
     .ps-sparkles {
@@ -659,9 +662,9 @@
     .ps-star.s3 { bottom: 20px; left: 16px; font-size: 10px; animation-delay: 1.1s; }
     .ps-star.s4 { bottom: 14px; right: 22px; font-size: 14px; animation-delay: 0.78s; }
     @keyframes ps-sparkle-breathe {
-      0%, 100% { transform: scale(1)    rotate(0deg); }
-      40%       { transform: scale(1.05) rotate(2deg); }
-      70%       { transform: scale(1.03) rotate(-1.5deg); }
+      0%, 100% { transform: rotate(0deg); }
+      40%       { transform: rotate(2deg); }
+      70%       { transform: rotate(-1.5deg); }
     }
     @keyframes ps-bear-float {
       0%, 100% { transform: translateY(0px); }
@@ -736,10 +739,9 @@
 
     /* ── Floral divider — alive ── */
     .floral-divider {
-      line-height: 0; overflow: hidden; margin-top: 0;
+      line-height: 0; overflow: hidden;
       position: relative;
-      /* extend top slightly so parallax translateY up never shows white gap */
-      margin-top: -2px;
+      margin-top: -80px;
     }
     /* Scale-breathing wrapper — animates independently from the parallax img */
     .floral-scale-wrap {
@@ -973,10 +975,10 @@
       </a>
 
       <ul class="nav-links">
-        <li><a href="#about">About</a></li>
-        <li><a href="#products">Programs</a></li>
-        <li><a href="#vision">Vision</a></li>
-        <li><a href="#resources">Resources</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="programs.html">Programs</a></li>
+        <li><a href="vision.html">Vision</a></li>
+        <li><a href="resources.html">Resources</a></li>
       </ul>
 
       <div class="nav-actions" style="display:flex;gap:10px;align-items:center;">
@@ -1019,7 +1021,7 @@
 
     <div class="hero-cta-row">
       <a href="get-started.html" class="btn-primary">Start for free →</a>
-      <a href="#products" class="btn-outline">Explore programs</a>
+      <a href="programs.html" class="btn-outline">Explore programs</a>
     </div>
   </div>
 
@@ -1112,7 +1114,7 @@
           <div class="aud-title">For Program Operators</div>
         </div>
         <div class="aud-body">
-          <div class="aud-desc">Cohort reports, grant documentation, and PD for community orgs and childcare networks.</div>
+          <div class="aud-desc">Cohort reports, grant documentation, and professional development for community orgs and childcare networks.</div>
           <span class="aud-stat">✦ Grant-ready</span>
         </div>
       </div>
@@ -1505,7 +1507,7 @@
       <div class="footer-col">
         <div class="footer-col-title">Resources</div>
         <ul>
-          <li><a href="#">Free Downloads</a></li>
+          <li><a href="resources.html">Free Downloads</a></li>
           <li><a href="#">Blog</a></li>
           <li><a href="#">Webinars</a></li>
           <li><a href="#">Research Library</a></li>
@@ -1515,7 +1517,7 @@
       <div class="footer-col">
         <div class="footer-col-title">Company</div>
         <ul>
-          <li><a href="#">About Us</a></li>
+          <li><a href="about.html">About Us</a></li>
           <li><a href="#">Careers</a></li>
           <li><a href="#">Contact</a></li>
           <li><a href="#">Brand Guidelines</a></li>
@@ -1561,51 +1563,6 @@
 </div>
 
 <script>
-  /* ── Scrollspy: highlight active nav link as user scrolls ── */
-  (function () {
-    const links = document.querySelectorAll('.nav-links a');
-
-    // Only activate after the user has actually scrolled (no highlight on first load)
-    let hasScrolled = false;
-    window.addEventListener('scroll', () => { hasScrolled = true; }, { once: true, passive: true });
-
-    // Clear all highlights when scrolled back near the top of the page
-    window.addEventListener('scroll', () => {
-      if (window.scrollY < 300) links.forEach(l => l.classList.remove('active'));
-    }, { passive: true });
-
-    // Map each nav href to the section element it points to
-    const sections = [];
-    links.forEach(link => {
-      const id = link.getAttribute('href').replace('#', '');
-      const el = document.getElementById(id);
-      if (el) sections.push({ link, el });
-    });
-
-    const observer = new IntersectionObserver(
-      entries => {
-        if (!hasScrolled) return;  // no highlight until user scrolls
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            sections.forEach(({ link, el }) => {
-              if (el === entry.target) {
-                links.forEach(l => l.classList.remove('active'));
-                link.classList.add('active');
-              }
-            });
-          }
-        });
-      },
-      {
-        // Trigger when section top clears the nav bar (~80px)
-        rootMargin: '-80px 0px -55% 0px',
-        threshold: 0
-      }
-    );
-
-    sections.forEach(({ el }) => observer.observe(el));
-  })();
-
   /* ── Vision carousel (infinite loop) ── */
   (function () {
     const track = document.getElementById('visionTrack');
@@ -1710,15 +1667,16 @@
     if (sessionStorage.getItem('ps-nav')) {
       sessionStorage.removeItem('ps-nav');
       overlay.classList.add('active');
-      setTimeout(() => overlay.classList.remove('active'), 950);
+      setTimeout(() => overlay.classList.remove('active'), 1800);
     }
 
-    // ── Only trigger overlay for "Get started" / "Start for free" → get-started.html
+    // ── Only trigger overlay for get-started.html links
     document.querySelectorAll('a[href="get-started.html"]').forEach(link => {
       link.addEventListener('click', e => {
         e.preventDefault();
         sessionStorage.setItem('ps-nav', '1');
-        window.location.href = 'get-started.html';
+        overlay.classList.add('active');
+        setTimeout(() => { window.location.href = 'get-started.html'; }, 420);
       });
     });
   })();

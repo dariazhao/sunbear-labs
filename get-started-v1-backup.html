@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Get Started — Sunbear Labs</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --yellow:        #FFCA00;
+      --yellow-light:  #FFF4D9;
+      --yellow-deep:   #CC9900;
+      --bg-page:       #FFFFFF;
+      --bg-warm:       #FFFCF6;
+      --bg-beige:      #F5F2EC;
+      --bg-card:       #FFFFFF;
+      --text-1:        #101828;
+      --text-2:        #344054;
+      --text-3:        #667085;
+      --border:        #EAECF0;
+      --border-mid:    #D0D5DD;
+      --teal:          #D0ECE5;
+      --teal-dark:     #2A6B58;
+      --teal-mid:      #4BAF94;
+      --blue:          #DCEBFF;
+      --blue-brand:    #80AFFF;
+      --purple:        #CD90E3;
+      --purple-light:  #F3E6FA;
+      --lavender:      #EDE8F8;
+      --radius-pill:   999px;
+      --radius-card:   16px;
+      --radius-md:     8px;
+      --shadow-sm:     0 1px 3px rgba(16,24,40,.06);
+      --shadow-md:     0 4px 12px rgba(16,24,40,.08);
+      --shadow-lg:     0 12px 32px rgba(16,24,40,.11);
+    }
+
+    html { scroll-behavior: smooth; }
+    a { text-decoration: none; }
+    body {
+      background: var(--bg-page);
+      font-family: 'Inter', -apple-system, sans-serif;
+      color: var(--text-1);
+      line-height: 1.6;
+    }
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 32px; }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(255,255,255,.94);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      height: 64px;
+    }
+    .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .logo-wordmark {
+      font-family: 'Nunito', sans-serif;
+      font-size: 17px; font-weight: 800;
+      letter-spacing: -0.01em; color: var(--text-1);
+    }
+    .nav-links { display: flex; align-items: center; gap: 2px; list-style: none; }
+    .nav-links a {
+      display: block; padding: 8px 14px;
+      font-size: 14px; font-weight: 500; color: var(--text-2);
+      text-decoration: none; border-radius: 8px;
+      transition: color .15s, background .15s;
+    }
+    .nav-links a:hover { color: var(--text-1); background: var(--yellow-light); }
+    .btn-primary {
+      background: var(--yellow);
+      color: var(--text-1);
+      font-family: 'Inter', sans-serif; font-size: 13.5px; font-weight: 600;
+      padding: 9px 20px; border-radius: var(--radius-pill);
+      border: none; cursor: pointer; text-decoration: none;
+      display: inline-flex; align-items: center; gap: 5px;
+      transition: background .2s, transform .15s;
+    }
+    .btn-primary:hover { background: #f0bc00; transform: translateY(-1px); }
+    .btn-outline {
+      background: transparent; color: var(--text-1);
+      font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 500;
+      padding: 10px 22px; border-radius: var(--radius-pill);
+      border: 1.5px solid var(--border-mid); cursor: pointer; text-decoration: none;
+      transition: border-color .2s, background .2s;
+    }
+    .btn-outline:hover { border-color: var(--text-1); }
+
+    /* ── HERO ── */
+    .hero {
+      padding: 72px 0 0;
+      background: #fff;
+      border-bottom: 1px solid var(--border);
+      overflow: hidden;
+    }
+    .hero-cols {
+      display: grid;
+      grid-template-columns: 55% 45%;
+      gap: 48px;
+      align-items: flex-end;
+    }
+    .hero-text { padding-bottom: 64px; }
+    .section-label {
+      display: inline-block;
+      font-size: 11px; font-weight: 700; letter-spacing: .1em;
+      text-transform: uppercase; color: var(--teal-dark);
+      background: var(--teal); border-radius: 999px;
+      padding: 4px 14px; margin-bottom: 20px;
+    }
+    .hero h1 {
+      font-family: 'Nunito', sans-serif;
+      font-size: clamp(32px, 4.5vw, 52px); font-weight: 800;
+      letter-spacing: -0.02em; line-height: 1.1;
+      color: var(--text-1); margin-bottom: 20px;
+    }
+    .hero-sub {
+      font-size: 17px; color: var(--text-2); line-height: 1.7;
+      max-width: 480px; margin-bottom: 32px;
+    }
+    .btn-cta-lg {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: linear-gradient(135deg, #FFE566 0%, #FFCA00 55%, #E8AA00 100%);
+      color: var(--text-1);
+      font-family: 'Inter', sans-serif; font-size: 15px; font-weight: 700;
+      padding: 14px 32px; border-radius: var(--radius-pill);
+      border: none; cursor: pointer; text-decoration: none;
+      transition: opacity .2s, transform .15s;
+      box-shadow: 0 4px 16px rgba(255,202,0,.35);
+    }
+    .btn-cta-lg:hover { opacity: .9; transform: translateY(-2px); }
+    .hero-img-col {
+      display: flex; align-items: flex-end; justify-content: flex-end;
+    }
+    .hero-img-col img {
+      width: 100%;
+      max-width: 500px;
+      border-radius: 16px 16px 0 0;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* ── FEATURE BAR ── */
+    .feature-bar {
+      background: var(--teal-dark);
+      padding: 16px 0;
+    }
+    .feature-bar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .feature-bar-inner span {
+      font-size: 13px; font-weight: 600; letter-spacing: .03em;
+      color: rgba(255,255,255,.9);
+    }
+    .feature-bar-inner .dot { color: rgba(255,255,255,.35); font-size: 10px; }
+
+    /* ── VALUE PROPS ── */
+    .value-props {
+      padding: 72px 0;
+      background: var(--bg-beige);
+    }
+    .value-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 40px;
+    }
+    .value-col { display: flex; flex-direction: column; gap: 14px; }
+    .value-icon-wrap {
+      width: 52px; height: 52px;
+      border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .value-icon-wrap img { width: 30px; height: 30px; object-fit: contain; }
+    .value-title {
+      font-family: 'Nunito', sans-serif;
+      font-size: 18px; font-weight: 800;
+      color: var(--text-1); line-height: 1.2;
+    }
+    .value-body {
+      font-size: 14.5px; color: var(--text-2); line-height: 1.7;
+    }
+
+    /* ── FILTER PILLS ── */
+    .filter-row {
+      display: flex; gap: 8px; flex-wrap: wrap;
+      margin-bottom: 36px;
+    }
+    .filter-pill {
+      font-family: 'Inter', sans-serif;
+      font-size: 13px; font-weight: 600;
+      padding: 7px 18px; border-radius: var(--radius-pill);
+      border: 1.5px solid var(--border-mid);
+      background: var(--bg-card); color: var(--text-2);
+      cursor: pointer; transition: all .18s;
+    }
+    .filter-pill:hover { border-color: var(--text-2); color: var(--text-1); }
+    .filter-pill.active {
+      background: var(--text-1); color: #fff;
+      border-color: var(--text-1);
+    }
+
+    /* ── OFFERINGS GRID ── */
+    .offerings-section {
+      padding: 80px 0;
+      background: var(--bg-page);
+    }
+    .offerings-header {
+      margin-bottom: 40px;
+    }
+    .offerings-header h2 {
+      font-family: 'Nunito', sans-serif;
+      font-size: clamp(26px, 3.5vw, 38px); font-weight: 800;
+      letter-spacing: -0.02em; line-height: 1.15;
+      margin-bottom: 8px;
+    }
+    .offerings-header .sub {
+      font-size: 15px; color: var(--text-2); line-height: 1.6;
+      max-width: 480px; margin-bottom: 28px;
+    }
+    .offerings-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .offering-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-card);
+      overflow: hidden;
+      transition: box-shadow .25s, transform .25s;
+    }
+    .offering-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-3px); }
+    .offering-img {
+      height: 180px;
+      display: flex; align-items: center; justify-content: center;
+      overflow: hidden;
+    }
+    .offering-img img {
+      max-height: 130px; max-width: 80%;
+      object-fit: contain;
+    }
+    .offering-body { padding: 22px 24px 26px; }
+    .offering-badges {
+      display: flex; gap: 6px; flex-wrap: wrap;
+      margin-bottom: 12px;
+    }
+    .badge {
+      font-family: 'Inter', sans-serif;
+      font-size: 10px; font-weight: 700; letter-spacing: .07em;
+      text-transform: uppercase;
+      padding: 3px 10px; border-radius: 999px;
+    }
+    .badge-type { background: var(--yellow-light); color: var(--text-2); border: 1px solid #E8C100; }
+    .badge-age  { background: var(--teal); color: var(--teal-dark); border: 1px solid #A0D8CE; }
+    .offering-name {
+      font-family: 'Nunito', sans-serif;
+      font-size: 17px; font-weight: 800;
+      color: var(--text-1); margin-bottom: 8px; line-height: 1.25;
+    }
+    .offering-desc {
+      font-family: 'Inter', sans-serif;
+      font-size: 14px; color: var(--text-2); line-height: 1.65;
+    }
+
+    /* ── DARK CTA SECTION ── */
+    .cta-dark {
+      background: #0D2620;
+      padding: 80px 0;
+      overflow: hidden;
+    }
+    .cta-dark-inner {
+      display: grid;
+      grid-template-columns: 55% 45%;
+      gap: 60px;
+      align-items: center;
+    }
+    .cta-dark-label {
+      display: inline-block;
+      font-size: 11px; font-weight: 700; letter-spacing: .1em;
+      text-transform: uppercase; color: var(--teal-mid);
+      margin-bottom: 20px;
+    }
+    .cta-dark-quote {
+      font-family: 'Nunito', sans-serif;
+      font-size: clamp(22px, 2.8vw, 34px); font-weight: 800;
+      color: #fff; line-height: 1.3;
+      margin-bottom: 16px;
+    }
+    .cta-dark-sub {
+      font-size: 15px; color: rgba(255,255,255,.6);
+      line-height: 1.7; margin-bottom: 36px;
+      max-width: 460px;
+    }
+    .btn-yellow {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: var(--yellow); color: var(--text-1);
+      font-family: 'Inter', sans-serif; font-size: 15px; font-weight: 700;
+      padding: 14px 32px; border-radius: var(--radius-pill);
+      border: none; cursor: pointer; text-decoration: none;
+      transition: opacity .2s, transform .15s;
+    }
+    .btn-yellow:hover { opacity: .9; transform: translateY(-2px); }
+    .cta-dark-img {
+      display: flex; justify-content: flex-end; align-items: flex-end;
+    }
+    .cta-dark-img img {
+      width: 100%;
+      border-radius: 16px;
+      object-fit: cover;
+      opacity: .9;
+    }
+
+    /* ── FLORAL DIVIDER ── */
+    .floral-divider {
+      line-height: 0; overflow: hidden; margin-top: -2px;
+    }
+    .floral-divider img {
+      width: 100%; display: block;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--bg-beige);
+      border-top: 1px solid var(--border);
+      padding: 56px 0 40px;
+    }
+    .footer-inner {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+      gap: 40px;
+    }
+    .footer-brand { display: flex; flex-direction: column; align-items: center; text-align: center; }
+    .footer-logo-row { display: flex; flex-direction: column; align-items: center; gap: 10px; margin-bottom: 16px; }
+    .footer-wm { font-family: 'Nunito', sans-serif; font-size: 18px; font-weight: 800; letter-spacing: -0.01em; color: var(--text-1); }
+    .footer-tagline { font-family: 'Inter', sans-serif; font-size: 13px; color: var(--text-2); line-height: 1.65; max-width: 220px; text-align: left; }
+    .footer-col-title { font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 700; color: var(--text-1); margin-bottom: 16px; }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-col ul a { font-family: 'Inter', sans-serif; font-size: 13px; color: var(--text-2); text-decoration: none; transition: color .15s; }
+    .footer-col ul a:hover { color: var(--text-1); }
+    .footer-bottom {
+      margin-top: 40px; padding-top: 24px;
+      border-top: 1px solid var(--border);
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 12px;
+    }
+    .footer-copy { font-size: 12px; color: var(--text-3); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .hero-cols { grid-template-columns: 1fr; }
+      .hero-img-col { display: none; }
+      .hero-text { padding-bottom: 56px; }
+      .value-grid { grid-template-columns: 1fr 1fr; }
+      .offerings-grid { grid-template-columns: repeat(2, 1fr); }
+      .cta-dark-inner { grid-template-columns: 1fr; }
+      .cta-dark-img { display: none; }
+      .footer-inner { grid-template-columns: 1fr 1fr; }
+      .nav-links { display: none; }
+    }
+    @media (max-width: 600px) {
+      .value-grid { grid-template-columns: 1fr; }
+      .offerings-grid { grid-template-columns: 1fr; }
+      .footer-inner { grid-template-columns: 1fr; }
+      .hero { padding: 48px 0 0; }
+    }
+
+    /* ── PHOTOSYNTHESIZING overlay ── */
+    .photosynth-overlay {
+      position: fixed; inset: 0; z-index: 9999;
+      background: rgba(255,252,246,0.97);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; pointer-events: none;
+      transition: opacity .35s ease;
+    }
+    .photosynth-overlay.active { opacity: 1; pointer-events: all; }
+    .photosynth-inner { display: flex; flex-direction: column; align-items: center; gap: 24px; }
+    .photosynth-text {
+      font-family: 'Nunito', sans-serif;
+      font-size: 20px; font-weight: 700;
+      color: #2A6B58; letter-spacing: .02em;
+    }
+    .ps-stage {
+      position: relative; width: 320px; height: 320px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .ps-sparkles {
+      position: absolute; inset: 0; width: 100%; height: 100%;
+      object-fit: cover; border-radius: 18px;
+      animation: ps-sparkle-breathe 3.2s ease-in-out infinite;
+    }
+    .ps-star {
+      position: absolute; z-index: 3;
+      font-style: normal; color: #FFCA00; line-height: 1;
+      animation: ps-star-twinkle 2s ease-in-out infinite;
+    }
+    .ps-star.s1 { top: 12px;  left: 20px;  font-size: 12px; animation-delay: 0s; }
+    .ps-star.s2 { top: 18px;  right: 16px; font-size: 16px; animation-delay: 0.52s; }
+    .ps-star.s3 { bottom: 20px; left: 16px; font-size: 10px; animation-delay: 1.1s; }
+    .ps-star.s4 { bottom: 14px; right: 22px; font-size: 14px; animation-delay: 0.78s; }
+    @keyframes ps-sparkle-breathe {
+      0%, 100% { transform: scale(1) rotate(0deg); }
+      40%       { transform: scale(1.05) rotate(2deg); }
+      70%       { transform: scale(1.03) rotate(-1.5deg); }
+    }
+    @keyframes ps-star-twinkle {
+      0%, 100% { opacity: 0; transform: scale(0.3) rotate(0deg); }
+      40%       { opacity: 1; transform: scale(1.15) rotate(20deg); }
+      65%       { opacity: 0.7; transform: scale(0.85) rotate(-10deg); }
+    }
+    @keyframes dot-bounce {
+      0%, 60%, 100% { opacity: 0; transform: translateY(0); }
+      30%            { opacity: 1; transform: translateY(-5px); }
+    }
+    .ps-dot-1 { animation: dot-bounce 1.5s ease-in-out 0s  infinite; display: inline-block; }
+    .ps-dot-2 { animation: dot-bounce 1.5s ease-in-out .2s infinite; display: inline-block; }
+    .ps-dot-3 { animation: dot-bounce 1.5s ease-in-out .4s infinite; display: inline-block; }
+  </style>
+</head>
+<body>
+
+<!-- ══ PHOTOSYNTHESIZING overlay ══ -->
+<div id="photosynth-overlay" class="photosynth-overlay" role="status" aria-live="polite" aria-label="Loading">
+  <div class="photosynth-inner">
+    <div class="ps-stage">
+      <img src="Sample Images/sparkles.svg" class="ps-sparkles" alt="">
+      <span class="ps-star s1">✦</span>
+      <span class="ps-star s2">✦</span>
+      <span class="ps-star s3">✦</span>
+      <span class="ps-star s4">✦</span>
+    </div>
+    <div class="photosynth-text">
+      Photosynthesizing<span class="ps-dot-1">.</span><span class="ps-dot-2">.</span><span class="ps-dot-3">.</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══ NAV ══ -->
+<nav>
+  <div class="container">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo" aria-label="Sunbear Labs">
+        <img src="Sample Images/sunbear-logo-colored.svg" width="44" height="44" alt="" aria-hidden="true">
+        <span class="logo-wordmark">Sunbear Labs</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#products">Programs</a></li>
+        <li><a href="index.html#vision">Vision</a></li>
+        <li><a href="index.html#resources">Resources</a></li>
+      </ul>
+      <div style="display:flex;gap:10px;align-items:center;">
+        <a href="index.html" class="btn-outline">Back to home</a>
+        <a href="#" class="btn-primary">Let's talk →</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+
+<!-- ══ HERO ══ -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-cols">
+
+      <div class="hero-text">
+        <span class="section-label">Get Started</span>
+        <h1>Everything your pre-K community needs — free.</h1>
+        <p class="hero-sub">
+          Sunbear Labs is an applied research lab bringing early childhood development science to pre-K classrooms, families, and programs — at no cost, always.
+        </p>
+        <a href="#" class="btn-cta-lg">Let's talk →</a>
+      </div>
+
+      <div class="hero-img-col">
+        <img src="Sample Images/blooms_crop.png" alt="Sunbear Labs — botanical illustration">
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ FEATURE BAR ══ -->
+<div class="feature-bar">
+  <div class="container">
+    <div class="feature-bar-inner">
+      <span>Literacy &amp; Language</span>
+      <span class="dot">·</span>
+      <span>STEM Discovery</span>
+      <span class="dot">·</span>
+      <span>Social-Emotional Learning</span>
+      <span class="dot">·</span>
+      <span>Family Engagement</span>
+      <span class="dot">·</span>
+      <span>Curriculum Frameworks</span>
+      <span class="dot">·</span>
+      <span>Always Free</span>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══ VALUE PROPS ══ -->
+<section class="value-props">
+  <div class="container">
+    <div class="value-grid">
+
+      <div class="value-col">
+        <div class="value-icon-wrap" style="background: #D0ECE5;">
+          <img src="Sample Images/flowers.svg" alt="">
+        </div>
+        <div class="value-title">Play-first, always</div>
+        <p class="value-body">Every Sunbear resource is built around hands-on exploration and conversation — no screens required. Learning that sticks starts with play.</p>
+      </div>
+
+      <div class="value-col">
+        <div class="value-icon-wrap" style="background: #FFF4D9;">
+          <img src="Sample Images/checklist.svg" alt="">
+        </div>
+        <div class="value-title">Research-backed</div>
+        <p class="value-body">Grounded in decades of early childhood development science — translated into tools educators and families can actually use, every day.</p>
+      </div>
+
+      <div class="value-col">
+        <div class="value-icon-wrap" style="background: #EDE8F8;">
+          <img src="Sample Images/scale.svg" alt="">
+        </div>
+        <div class="value-title">Free, for everyone</div>
+        <p class="value-body">No paywalls. No premium tiers. Every resource is available to every educator, family, and program — because readiness shouldn't have a price tag.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ OFFERINGS ══ -->
+<section class="offerings-section">
+  <div class="container">
+
+    <div class="offerings-header">
+      <span class="section-label">Our Programs</span>
+      <h2>Six ways to build readiness</h2>
+      <p class="sub">Every program is free. Filter by who you're building for.</p>
+
+      <div class="filter-row" id="filterRow">
+        <button class="filter-pill active" data-filter="all">All</button>
+        <button class="filter-pill" data-filter="educators">For Educators</button>
+        <button class="filter-pill" data-filter="families">For Families</button>
+        <button class="filter-pill" data-filter="programs">For Programs</button>
+      </div>
+    </div>
+
+    <div class="offerings-grid" id="offeringsGrid">
+
+      <!-- Sunbear Stories -->
+      <div class="offering-card" data-audience="educators families programs">
+        <div class="offering-img" style="background: #FFF4D9;">
+          <img src="Sample Images/flowers.svg" alt="Flowers illustration">
+        </div>
+        <div class="offering-body">
+          <div class="offering-badges">
+            <span class="badge badge-type">On-demand</span>
+            <span class="badge badge-age">Ages 3–5</span>
+          </div>
+          <div class="offering-name">Sunbear Stories</div>
+          <p class="offering-desc">Story-driven literacy for pre-K. Phonics, vocabulary, and narrative thinking wrapped in loveable characters.</p>
+        </div>
+      </div>
+
+      <!-- Sunbear Explorer -->
+      <div class="offering-card" data-audience="educators families">
+        <div class="offering-img" style="background: #E8F5EE;">
+          <img src="Sample Images/garden.svg" alt="Garden illustration">
+        </div>
+        <div class="offering-body">
+          <div class="offering-badges">
+            <span class="badge badge-type">Printable</span>
+            <span class="badge badge-age">Ages 3–6</span>
+          </div>
+          <div class="offering-name">Sunbear Explorer</div>
+          <p class="offering-desc">Hands-on STEM discovery packs. Early math, science, and curiosity — print-and-go or digital.</p>
+        </div>
+      </div>
+
+      <!-- Sunbear Kids Club -->
+      <div class="offering-card" data-audience="educators programs">
+        <div class="offering-img" style="background: #EDE8F8;">
+          <img src="Sample Images/signals.svg" alt="Signals illustration">
+        </div>
+        <div class="offering-body">
+          <div class="offering-badges">
+            <span class="badge badge-type">On-demand</span>
+            <span class="badge badge-age">Ages 4–6</span>
+          </div>
+          <div class="offering-name">Sunbear Kids Club</div>
+          <p class="offering-desc">SEL skill-builders for pre-K classrooms. Real tools for emotional regulation, friendship, and big feelings.</p>
+        </div>
+      </div>
+
+      <!-- Sunbear Starter School -->
+      <div class="offering-card" data-audience="educators programs">
+        <div class="offering-img" style="background: #E8F2FF;">
+          <img src="Sample Images/checklist.svg" alt="Checklist illustration">
+        </div>
+        <div class="offering-body">
+          <div class="offering-badges">
+            <span class="badge badge-type">Curriculum</span>
+            <span class="badge badge-age">Ages 4–5</span>
+          </div>
+          <div class="offering-name">Sunbear Starter School</div>
+          <p class="offering-desc">The complete kindergarten readiness framework — activity sequences, lesson plans, and family guides aligned to K-entry standards across 38 states.</p>
+        </div>
+      </div>
+
+      <!-- Sunbear Library Essentials -->
+      <div class="offering-card" data-audience="educators families programs">
+        <div class="offering-img" style="background: #FFF0E8;">
+          <img src="Sample Images/incubation.svg" alt="Incubation illustration">
+        </div>
+        <div class="offering-body">
+          <div class="offering-badges">
+            <span class="badge badge-type">Printable</span>
+            <span class="badge badge-age">Ages 3–6</span>
+          </div>
+          <div class="offering-name">Sunbear Library Essentials</div>
+          <p class="offering-desc">Curated read-aloud guides, book lists, and literacy activity sheets for school and home libraries.</p>
+        </div>
+      </div>
+
+      <!-- Sunbear Summer Camp -->
+      <div class="offering-card" data-audience="educators families programs">
+        <div class="offering-img" style="background: #F3E6FA;">
+          <img src="Sample Images/sparkles.svg" alt="Sparkles illustration">
+        </div>
+        <div class="offering-body">
+          <div class="offering-badges">
+            <span class="badge badge-type">Curriculum</span>
+            <span class="badge badge-age">Ages 4–6</span>
+          </div>
+          <div class="offering-name">Sunbear Summer Camp</div>
+          <p class="offering-desc">A 6-week summer readiness program bridging pre-K to kindergarten with themed weekly activity packs.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ DARK CTA ══ -->
+<section class="cta-dark">
+  <div class="container">
+    <div class="cta-dark-inner">
+
+      <div class="cta-dark-text">
+        <div class="cta-dark-label">Our commitment</div>
+        <h2 class="cta-dark-quote">Everything here is free — because kindergarten readiness shouldn't depend on budget. That's the whole point.</h2>
+        <p class="cta-dark-sub">
+          We believe every child deserves to be kindergarten-ready from day one. And every educator, family, and program deserves the tools to make that happen.
+        </p>
+        <a href="#" class="btn-yellow">Let's talk →</a>
+      </div>
+
+      <div class="cta-dark-img">
+        <img src="Sample Images/hilltop_crop.png" alt="Every child, kindergarten-ready">
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ FLORAL DIVIDER ══ -->
+<div class="floral-divider">
+  <img src="Sample Images/floralbottom.png" alt="">
+</div>
+
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+
+      <div class="footer-brand">
+        <div class="footer-logo-row">
+          <img src="Sample Images/sunbear-logo-colored.svg" width="90" height="90" alt="" aria-hidden="true">
+          <span class="footer-wm">Sunbear Labs</span>
+        </div>
+        <p class="footer-tagline">Sunbear Labs is a kindergarten readiness lab for pre-K educators, families, and program operators.</p>
+      </div>
+
+      <div class="footer-col">
+        <div class="footer-col-title">Product</div>
+        <ul>
+          <li><a href="#">Readiness Activities</a></li>
+          <li><a href="#">Curriculum Frameworks</a></li>
+          <li><a href="#">Progress Reporting</a></li>
+          <li><a href="#">Family Tools</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <div class="footer-col-title">Solutions</div>
+        <ul>
+          <li><a href="#">Head Start Programs</a></li>
+          <li><a href="#">Childcare Networks</a></li>
+          <li><a href="#">School Districts</a></li>
+          <li><a href="#">Home-Based Programs</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <div class="footer-col-title">Resources</div>
+        <ul>
+          <li><a href="#">Free Downloads</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Webinars</a></li>
+          <li><a href="#">Research Library</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <div class="footer-col-title">Company</div>
+        <ul>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Contact</a></li>
+          <li><a href="#">Brand Guidelines</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <span class="footer-copy">© 2026 Sunbear Labs, Inc. All rights reserved.</span>
+      <div style="display:flex;gap:20px;">
+        <a href="#" style="font-size:12px;color:var(--text-3);text-decoration:none;">Privacy Policy</a>
+        <a href="#" style="font-size:12px;color:var(--text-3);text-decoration:none;">Terms of Service</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+<script>
+  // Filter pills
+  (function () {
+    const pills = document.querySelectorAll('.filter-pill');
+    const cards = document.querySelectorAll('.offering-card');
+    pills.forEach(pill => {
+      pill.addEventListener('click', () => {
+        pills.forEach(p => p.classList.remove('active'));
+        pill.classList.add('active');
+        const filter = pill.dataset.filter;
+        cards.forEach(card => {
+          if (filter === 'all') {
+            card.style.display = '';
+          } else {
+            const audiences = card.dataset.audience.split(' ');
+            card.style.display = audiences.includes(filter) ? '' : 'none';
+          }
+        });
+      });
+    });
+  })();
+
+  /* ── PHOTOSYNTHESIZING — cross-page transition ── */
+  (function () {
+    const overlay = document.getElementById('photosynth-overlay');
+    if (!overlay) return;
+    if (sessionStorage.getItem('ps-nav')) {
+      sessionStorage.removeItem('ps-nav');
+      overlay.classList.add('active');
+      setTimeout(() => overlay.classList.remove('active'), 950);
+    }
+    function isSameSiteLink(a) {
+      const href = a.getAttribute('href');
+      if (!href || href.startsWith('#')) return false;
+      if (/^(mailto|tel|javascript):/i.test(href)) return false;
+      if (a.target === '_blank') return false;
+      if (/^https?:\/\//i.test(href)) return false;
+      return true;
+    }
+    document.querySelectorAll('a').forEach(link => {
+      if (!isSameSiteLink(link)) return;
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        const dest = link.getAttribute('href');
+        sessionStorage.setItem('ps-nav', '1');
+        overlay.classList.add('active');
+        setTimeout(() => { window.location.href = dest; }, 560);
+      });
+    });
+  })();
+</script>
+
+</body>
+</html>
