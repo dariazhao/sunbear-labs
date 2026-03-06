@@ -1225,6 +1225,7 @@
   /* ── Photosynthesizing page transition ── */
   (function () {
     const overlay = document.getElementById('photosynth-overlay');
+    window.addEventListener('pageshow', e => { if (e.persisted) overlay.classList.remove('active'); });
 
     // Entry: show overlay if navigated here via internal link
     if (sessionStorage.getItem('ps-nav')) {

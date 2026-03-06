@@ -1071,6 +1071,7 @@
   /* ── Photosynthesizing page transition ── */
   (function () {
     const overlay = document.getElementById('photosynth-overlay');
+    window.addEventListener('pageshow', e => { if (e.persisted) overlay.classList.remove('active'); });
     if (sessionStorage.getItem('ps-nav')) {
       sessionStorage.removeItem('ps-nav');
       overlay.classList.add('active');
