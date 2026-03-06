@@ -46,6 +46,14 @@
     .nav-links a { display: block; padding: 8px 14px; font-size: 14px; font-weight: 500; color: var(--text-2); text-decoration: none; border-radius: 8px; transition: color .15s, background .15s; }
     .nav-links a:hover { color: var(--text-1); background: var(--yellow-light); }
     .nav-links a.active { color: var(--text-1); background: var(--yellow-light); font-weight: 600; }
+    .nav-hamburger { display: none; background: none; border: none; cursor: pointer; padding: 6px; border-radius: 6px; transition: background .15s; }
+    .nav-hamburger:hover { background: var(--yellow-light); }
+    .nav-hamburger svg { display: block; }
+    .mobile-menu { display: none; position: absolute; top: 100%; left: 0; right: 0; background: rgba(255,255,255,.98); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid var(--border); padding: 12px 24px 20px; box-shadow: var(--shadow-md); }
+    .mobile-menu.open { display: block; }
+    .mobile-menu a { display: block; padding: 12px 8px; font-size: 15px; font-weight: 500; color: var(--text-2); text-decoration: none; border-radius: 8px; transition: color .15s, background .15s; }
+    .mobile-menu a:hover { color: var(--text-1); background: var(--yellow-light); }
+    .mobile-menu a.active { color: var(--text-1); font-weight: 600; }
     .btn-primary { background: linear-gradient(135deg, #FFE566 0%, #FFCA00 55%, #E8AA00 100%); color: var(--text-1); font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 600; padding: 10px 22px; border-radius: var(--radius-pill); border: none; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; gap: 5px; transition: opacity .2s, transform .15s; position: relative; overflow: hidden; }
     .btn-primary::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(108deg, transparent 28%, rgba(255,255,255,.22) 28%, rgba(255,255,255,.22) 40%, transparent 40%, transparent 58%, rgba(255,255,255,.10) 58%, rgba(255,255,255,.10) 68%, transparent 68%); border-radius: inherit; pointer-events: none; }
     .btn-primary:hover { opacity: .9; transform: translateY(-1px); }
@@ -540,9 +548,11 @@
       .footer-brand { grid-column: 1 / -1; }
       .cta-strip { flex-direction: column; padding: 44px 32px; }
       .cta-strip-graphic { height: 85%; bottom: -12px; right: -12px; }
-      .hero-cols { grid-template-columns: 1fr; }
-      .hero-img-col { display: none; }
+      .hero-cols { grid-template-columns: 1fr; text-align: center; }
+      .hero-img-col { justify-content: center; margin-top: 24px; }
+      .hero-img-col img { width: 80%; max-width: 400px; }
       .nav-links { display: none; }
+      .nav-hamburger { display: block; }
       .nav-actions .btn-outline { display: none !important; }
       .nav-actions .btn-primary { font-size: 13px; padding: 9px 18px; }
       .logo-wordmark { white-space: nowrap; }
@@ -588,7 +598,16 @@
       <div class="nav-actions" style="display:flex;gap:10px;align-items:center;">
         <a href="#" class="btn-outline">Log in</a>
         <a href="get-started.html" class="btn-primary">Get started →</a>
+        <button class="nav-hamburger" id="navHamburger" aria-label="Menu">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M3 6h16M3 11h16M3 16h16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+        </button>
       </div>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="about.html" class="active">About</a>
+      <a href="programs.html">Programs</a>
+      <a href="vision.html">Vision</a>
+      <a href="resources.html">Resources</a>
     </div>
   </div>
 </nav>
@@ -897,7 +916,7 @@
 <!-- ══════ FLORAL DIVIDER ══════ -->
 <div class="floral-divider" id="floralDivider">
   <div class="floral-scale-wrap">
-    <img src="Sample Images/floralbottom.png" alt="" id="floralImg">
+    <img src="Sample Images/garden.svg" alt="" id="floralImg">
   </div>
 </div>
 
@@ -1134,6 +1153,17 @@
       const ty = (mouseTY + scrollTY).toFixed(2);
       img.style.transform = `translate(${tx}px, ${ty}px)`;
     }
+  })();
+
+  /* Mobile menu */
+  (function () {
+    var btn = document.getElementById('navHamburger');
+    var menu = document.getElementById('mobileMenu');
+    if (!btn || !menu) return;
+    btn.addEventListener('click', function() { menu.classList.toggle('open'); });
+    document.addEventListener('click', function(e) {
+      if (!btn.contains(e.target) && !menu.contains(e.target)) menu.classList.remove('open');
+    });
   })();
 </script>
 

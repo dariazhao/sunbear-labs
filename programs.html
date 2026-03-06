@@ -91,6 +91,14 @@
       color: var(--text-1); background: var(--yellow-light);
       font-weight: 600;
     }
+    .nav-hamburger { display: none; background: none; border: none; cursor: pointer; padding: 6px; border-radius: 6px; transition: background .15s; }
+    .nav-hamburger:hover { background: var(--yellow-light); }
+    .nav-hamburger svg { display: block; }
+    .mobile-menu { display: none; position: absolute; top: 100%; left: 0; right: 0; background: rgba(255,255,255,.98); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid var(--border); padding: 12px 24px 20px; box-shadow: var(--shadow-md); }
+    .mobile-menu.open { display: block; }
+    .mobile-menu a { display: block; padding: 12px 8px; font-size: 15px; font-weight: 500; color: var(--text-2); text-decoration: none; border-radius: 8px; transition: color .15s, background .15s; }
+    .mobile-menu a:hover { color: var(--text-1); background: var(--yellow-light); }
+    .mobile-menu a.active { color: var(--text-1); font-weight: 600; }
     .btn-primary {
       background: linear-gradient(135deg, #FFE566 0%, #FFCA00 55%, #E8AA00 100%);
       color: var(--text-1);
@@ -665,6 +673,7 @@
       .cta-strip       { flex-direction: column; padding: 44px 32px; }
       .cta-strip-graphic { height: 85%; bottom: -12px; right: -12px; }
       .nav-links       { display: none; }
+      .nav-hamburger   { display: block; }
       .nav-actions .btn-outline { display: none !important; }
       .nav-actions .btn-primary { font-size: 13px; padding: 9px 18px; }
       .logo-wordmark   { white-space: nowrap; }
@@ -728,8 +737,17 @@
       <div class="nav-actions" style="display:flex;gap:10px;align-items:center;">
         <a href="#" class="btn-outline">Log in</a>
         <a href="get-started.html" class="btn-primary">Get started →</a>
+        <button class="nav-hamburger" id="navHamburger" aria-label="Menu">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M3 6h16M3 11h16M3 16h16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+        </button>
       </div>
 
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="about.html">About</a>
+      <a href="programs.html" class="active">Programs</a>
+      <a href="vision.html">Vision</a>
+      <a href="resources.html">Resources</a>
     </div>
   </div>
 </nav>
@@ -1075,7 +1093,7 @@
 ══════════════════════════════════ -->
 <div class="floral-divider" id="floralDivider">
   <div class="floral-scale-wrap">
-    <img src="Sample Images/floralbottom.png" alt="" id="floralImg">
+    <img src="Sample Images/garden.svg" alt="" id="floralImg">
   </div>
 </div>
 
@@ -1292,6 +1310,17 @@
       const ty = (mouseTY + scrollTY).toFixed(2);
       img.style.transform = `translate(${tx}px, ${ty}px)`;
     }
+  })();
+
+  /* Mobile menu */
+  (function () {
+    var btn = document.getElementById('navHamburger');
+    var menu = document.getElementById('mobileMenu');
+    if (!btn || !menu) return;
+    btn.addEventListener('click', function() { menu.classList.toggle('open'); });
+    document.addEventListener('click', function(e) {
+      if (!btn.contains(e.target) && !menu.contains(e.target)) menu.classList.remove('open');
+    });
   })();
 </script>
 
